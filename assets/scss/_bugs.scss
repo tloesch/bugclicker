@@ -1,0 +1,49 @@
+.bug-wrap {
+  margin: 10px 0px;
+  .ascii {
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+    &:hover {
+      &::after {
+        content: "DEFAULT";
+        background-color: #eee;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  }
+  .counter {
+    margin-right: 10px;
+  }
+}
+
+#bohrbug {
+  .ascii:hover {
+    &::after {
+      content: "BOHRBUG";
+    }
+  }
+}
+#heisenbug {
+  .ascii:hover {
+    &::after {
+      content: "HEISENBUG";
+    }
+  }
+}
+#mandelbug {
+  .ascii:hover {
+    &::after {
+      content: "MANDELBUG";
+    }
+  }
+}
+#schroedinbug {
+  .ascii:hover {
+    &::after {
+      content: "SCHROEDINBUG";
+    }
+  }
+}

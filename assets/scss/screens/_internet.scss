@@ -1,0 +1,19 @@
+// INTERNET
+
+#screen-internet {
+  .webpage {
+    width: 100%;
+    display: none;
+    &.active {
+      display: block;
+    }
+    .wp-header {
+
+    }
+    .wp-content {
+      .worker-wrap {
+        max-width: 49%;
+      }
+    }
+  }
+}

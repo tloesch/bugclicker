@@ -1,0 +1,114 @@
+.nav-wrap {
+  width: 70%;
+  margin: 0 auto;
+  #navigation {
+    text-align: center;
+    .nav-elem {
+      max-width: 105px;
+      min-width: 105px;
+      width: 105px;
+      &:hover {
+        background-color: rgba(0,0,0,0.5);
+      }
+      &.nav_active {
+        text-decoration: underline;
+      }
+    }
+    .ascii {
+      margin: 0;
+      flex-basis: 4%;
+      margin-top: 4px;
+      margin-bottom: -4px;
+      &:first-child, &:last-child {
+        flex-basis: 100%;
+        margin: 0;
+      }
+    }
+
+  }
+}
+section {
+  padding: 2em 1em;
+  display: none;
+  &.active {
+    display: flex;
+  }
+}
+
+#click-panel {
+}
+
+.clickGroup {
+  position: relative;
+}
+
+#screenElementPC {
+  .left, .right {
+    flex-basis: 4%;
+  }
+  .content {
+    flex-basis: 90%;
+  }
+}
+
+.progressBar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: green;
+  background-image: linear-gradient(90deg, transparent 50%, white 50%), linear-gradient(90deg, white 50%, transparent 50%);
+}
+
+
+@mixin circle($FixBtnSize) {
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - #{$FixBtnSize/2});
+  top: calc(50% - #{$FixBtnSize/2});
+  width: $FixBtnSize;
+  height: $FixBtnSize;
+}
+
+.progress-pie-chart {
+  width: $FixBtnSize;
+  height: $FixBtnSize;
+  border-radius: 50%;
+  background-color: #E5E5E5;
+  position: relative;
+  &.gt-50 {
+    background-color: #81CE97;
+  }
+}
+.ppc-progress {
+  @include circle($FixBtnSize);
+  clip: rect(0, $FixBtnSize, $FixBtnSize, #{$FixBtnSize/2});
+  .ppc-progress-fill {
+    @include circle($FixBtnSize);
+    clip: rect(0, #{$FixBtnSize/2}, $FixBtnSize, 0);
+    background: #81CE97;
+    transform: rotate(0deg);
+  }
+  .gt-50 & {
+    clip: rect(0, #{$FixBtnSize/2}, $FixBtnSize, 0);
+    .ppc-progress-fill {
+      clip: rect(0, $FixBtnSize, $FixBtnSize, #{$FixBtnSize/2});
+      background: #E5E5E5;
+    }
+  }
+}
+.ppc-percents {
+  @include circle(#{$FixBtnSize/1.15});
+  background: #fff;
+  text-align: center;
+  border: none;
+  span {
+    display: block;
+    font-size: 2.6em;
+    font-weight: bold;
+    color: #81CE97;
+  }
+}
+.pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
