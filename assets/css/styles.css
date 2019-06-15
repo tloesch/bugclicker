@@ -55,7 +55,10 @@ button::-moz-focus-inner {
   cursor: pointer; }
 
 .bug-wrap {
-  margin: 10px 0px; }
+  margin: 10px 0px;
+  display: none; }
+  .bug-wrap.activ {
+    display: flex; }
   .bug-wrap .ascii {
     position: relative;
     margin-right: 10px;

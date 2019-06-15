@@ -1,5 +1,9 @@
 .bug-wrap {
   margin: 10px 0px;
+  display: none;
+  &.activ {
+    display: flex;
+  }
   .ascii {
     position: relative;
     margin-right: 10px;

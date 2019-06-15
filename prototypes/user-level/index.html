@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>User Level Prototype</title>
+	<style type="text/css">
+		#static{float:left;padding-right:50px;margin-right: 50px;border-right:2px solid black;}#dynamic{float:left;}
+	</style>
+</head>
+<body>
+	<section id="static">
+		<div id="ascii">
+			<h2>STATIC VERSION</h2>
+			<pre>
+╔════════════════════╦═════╗
+╟███████▍            ╢ LVL ║
+╚════════════════════╩═════╝
+ STRING_LEVEL_TITLE
+
+-----------
+INNER WIDTH: 20 chars
+═ = 9552
+║ = 9553
+╔ = 9556
+╗ = 9559
+╚ = 9562
+╝ = 9565
+╟ = 9567
+╢ = 9570
+╦ = 9574
+╩ = 9577
+█ = 9608
+▉ = 9609
+▊ = 9610
+▋ = 9611
+▌ = 9612
+▍ = 9613
+▎ = 9614
+▏ = 9615
+
+			</pre>
+		</div>
+	</section>
+	<section id="dynamic">
+		<h2>PRODUCTIVE</h2>
+		<div id="user_level">
+			<pre id="lvl"></pre>
+		</div>
+	</section>
+	<script type="text/javascript">
+		
+
+		var max_level = 20;
+		
+		var user_level = 0;
+
+		var user_level_progress = 0;
+		var level_requirement = 100;
+		var increaser = 1;
+		// TIMER JUST FOR TESTING
+		var timer = setInterval(function() {
+			user_level_progress += increaser;
+			if (user_level_progress >= level_requirement) {
+					level_requirement += 50;
+					user_level += 1;
+					user_level_progress = 0;
+					increaser += 5;
+			}
+			if(user_level > max_level) {
+				clearInterval(timer);
+				user_level_progress = level_requirement - 1;
+				user_level = max_level;
+				generate_element(user_level, user_level_progress, level_requirement);
+			}else {
+				generate_element(user_level, user_level_progress, level_requirement);
+			}
+		}, 200);
+		
+		generate_element(user_level, user_level_progress, level_requirement);
+
+		function generate_element(lvl, progress, requirement) {
+			var level_titles = [
+				[0,4,"Start level"],
+				[5,9,"2. Level"],
+				[10,14,"Middel class level"],
+				[15,20,"Max level title"],
+			];
+			var border_parts = ["═","║","╔","╗","╚","╝","╟","╢","╦","╩"];
+			var progress_parts = [" ","▏","▎","▍","▌","▋","▊","▉","█"];
+
+			var lvl_length = lvl.toString().length;
+			var lvl_border_part = "═".repeat(lvl_length);
+
+			var top_part = "╔════════════════════╦═" + lvl_border_part + "═╗";
+			var bottom_part = "╚════════════════════╩═" + lvl_border_part + "═╝";
+
+			// CONVERT PROGRESS TO ASCII
+			// size of full sections
+			var full_sections_size = requirement / 20;
+			// amout of filled sections
+			var full_sections_count = Math.floor(progress / full_sections_size);
+			// remaining progress
+			var remain_progress = progress % full_sections_size;
+			// size of section parts
+			var section_part_size = full_sections_size / progress_parts.length;
+			// progress of section
+			var full_part_count = Math.floor(remain_progress / section_part_size);
+			// progress filler
+			if(full_sections_count == 20) {
+				var progress_filler = "";
+			}else {
+				var progress_filler = " ".repeat((20 - full_sections_count) - 1);
+			}
+			
+			
+
+			//console.log(full_sections_count);
+			//console.log(remain_progress);
+			//console.log(section_part_size);
+			//console.log(full_part_count);
+			//console.log(progress_filler.length);
+
+			var progress_part = "╟" + progress_parts[7].repeat(full_sections_count) + progress_parts[full_part_count] + progress_filler + "╢ " + lvl + " ║";
+
+			var lvl_elem = document.getElementById("lvl");
+
+			// get level title
+			var level_title = "FILLER";
+			// TODO: SET MAX LEVEL
+			level_titles.some(function(elem){
+				if(elem[0] <= lvl && elem[1] >= lvl) {
+					level_title = elem[2];
+					return;
+				}
+			})
+
+			lvl_elem.innerHTML = top_part + "\n" + progress_part + "\n" + bottom_part + "\n " + level_title;
+		}
+
+	</script>
+</body>
+</html>

@@ -3,11 +3,11 @@
   ################*/
 
 //TODO: CHECK IF element IS NodeList OR Array AND LOOP IF MORE THAN ONE element IS IN LIST
-function updateCounter(element, value) {
+function update_counter(element, value) {
   element.innerHTML = value;
 }
 
-function updateProgressbar(element, value, max) {
+function update_progressbar(element, value, max) {
   var $pbw = element['wrap'];
   var $pb = element['bar'];
   var percent = (value / max) * 100;
@@ -18,10 +18,10 @@ function updateProgressbar(element, value, max) {
     $pbw.removeClass('gt-50');
   }
   $pb.css('transform','rotate('+ deg +'deg)');
-//  updateCompContent();
+//  update_comp_content();
 }
 
-function updateCompContent() {
+function update_comp_content() {
   var pc = document.getElementById('screenElementPC');
   var before = "     ______________________________";
   var side = "||";
@@ -37,11 +37,16 @@ function updateCompContent() {
   }
 }
 
-function updateStatList() {
-  
+function update_stat_list() {
+
 }
 
-function refreshAllScreenElements() {
-  refreshMoney();
+function refresh_all_screen_elements() {
+  refresh_money();
+
+  // TODO: Auto loop through all bugs
   bbug.refresh();
+  hbug.refresh();
+  mbug.refresh();
+  sbug.refresh();
 }

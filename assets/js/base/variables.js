@@ -10,7 +10,7 @@ var USER_WORLD_POS = 0; // DEFAULT 0 (START SCREEN)
   // BOHRBUG
 var BBUG_DATA = {
   "name": "bohrbug",
-  "enabelt": 1,
+  "activ": 1,
   "amount": 0,
   "autoAdd": 1,
   "autoTimer": 5000,
@@ -22,17 +22,20 @@ var BBUG_DATA = {
   "fixPointsAdd": 1,
   "fixPointsAutoAdd": 0,
   "fixPointsReq": 10,
+  "screenWrap": null,
   "screenCounter": null,
   "screenFixCounter": null,
   "screenFixProgress": null,
-  "statTotal": 0,
-  "statFixTotal": 0
+  "stats":{
+    "amount":0,
+    "fixed":0
+  }
 }
 
   // HEISENBUG
 var HBUG_DATA = {
   "name": "heisenbug",
-  "enabelt": 0,
+  "activ": 0,
   "amount": 0,
   "autoAdd": 1,
   "autoTimer": 5000,
@@ -44,15 +47,20 @@ var HBUG_DATA = {
   "fixPointsAdd": 1,
   "fixPointsAutoAdd": 0,
   "fixPointsReq": 15,
+  "screenWrap": null,
   "screenCounter": null,
   "screenFixCounter": null,
-  "screenFixProgress": null
+  "screenFixProgress": null,
+  "stats":{
+    "amount":0,
+    "fixed":0
+  }
 }
 
   // MANDELBUG
 var MBUG_DATA = {
   "name": "heisenbug",
-  "enabelt": 0,
+  "activ": 0,
   "amount": 0,
   "autoAdd": 1,
   "autoTimer": 5000,
@@ -64,15 +72,20 @@ var MBUG_DATA = {
   "fixPointsAdd": 1,
   "fixPointsAutoAdd": 0,
   "fixPointsReq": 50,
+  "screenWrap": null,
   "screenCounter": null,
   "screenFixCounter": null,
-  "screenFixProgress": null
+  "screenFixProgress": null,
+  "stats":{
+    "amount":0,
+    "fixed":0
+  }
 }
 
   // SCHROEDINBUG
 var SBUG_DATA = {
   "name": "heisenbug",
-  "enabelt": 0,
+  "activ": 0,
   "amount": 0,
   "autoAdd": 1,
   "autoTimer": 5000,
@@ -83,10 +96,15 @@ var SBUG_DATA = {
   "fixPointsAmount": 0,
   "fixPointsAdd": 1,
   "fixPointsAutoAdd": 0,
-  "fixPointsReq": 50,
+  "fixPointsReq": 500,
+  "screenWrap": null,
   "screenCounter": null,
   "screenFixCounter": null,
-  "screenFixProgress": null
+  "screenFixProgress": null,
+  "stats":{
+    "amount":0,
+    "fixed":0
+  }
 }
 
 //HELPERS
@@ -122,16 +140,20 @@ var STORY_INTRO_DONE = 0 // DEFAULT 0 FOR FIRST START
 // var SCREEN_MBUG_COUNTER, SCREEN_MBUG_FIX_COUNTER, SCREEN_MBUG_FIX_PROGRESS;
 // var SCREEN_SBUG_COUNTER, SCREEN_SBUG_FIX_COUNTER, SCREEN_SBUG_FIX_PROGRESS;
 
-function setScreenVariables() {
+function set_screen_variables() {
+  BBUG_DATA["screenWrap"] = document.getElementById('bohrbug');
   BBUG_DATA["screenCounter"] = document.getElementById('bbug-counter');
   BBUG_DATA["screenFixCounter"] = document.getElementById('bbug-fix-counter');
   BBUG_DATA["screenFixProgress"] = {"wrap":$('#bbug-fix-progress'), "bar": $('#bbug-fix-progress .ppc-progress .ppc-progress-fill')};
+  HBUG_DATA["screenWrap"] = document.getElementById('heisenbug');
   HBUG_DATA["screenCounter"] = document.getElementById('hbug-counter');
   HBUG_DATA["screenFixCounter"] = document.getElementById('hbug-fix-counter');
   HBUG_DATA["screenFixProgress"] = {"wrap":$('#hbug-fix-progress'), "bar": $('#hbug-fix-progress .ppc-progress .ppc-progress-fill')};
+  MBUG_DATA["screenWrap"] = document.getElementById('mandelbug');
   MBUG_DATA["screenCounter"] = document.getElementById('mbug-counter');
   MBUG_DATA["screenFixCounter"] = document.getElementById('mbug-fix-counter');
   MBUG_DATA["screenFixProgress"] = {"wrap":$('#mbug-fix-progress'), "bar": $('#mbug-fix-progress .ppc-progress .ppc-progress-fill')};
+  SBUG_DATA["screenWrap"] = document.getElementById('schroedinbug');
   SBUG_DATA["screenCounter"] = document.getElementById('sbug-counter');
   SBUG_DATA["screenFixCounter"] = document.getElementById('sbug-fix-counter');
   SBUG_DATA["screenFixProgress"] = {"wrap":$('#sbug-fix-progress'), "bar": $('#sbug-fix-progress .ppc-progress .ppc-progress-fill')};

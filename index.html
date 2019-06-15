@@ -25,7 +25,8 @@
     <div class="flex">
       <div id="click-panel">
         <div id="money-counter" class="money-counter">0$</div>
-        <div id="bohrbug" class="flex bug-wrap align-center">
+
+        <div id="bohrbug" class="bug-wrap align-center activ">
           <div class="ascii"> _ /-\ _<br/>´_| B |_`<br/>´  \_/  `</div>
           <div id="bbug-fix-progress" class="clickGroup progress-pie-chart" data-percent="0">
             <div class="ppc-progress">
@@ -35,7 +36,8 @@
           </div><br/>
           <p id="bbug-counter" class="counter">0</p>
         </div>
-        <div id="heisenbug" class="flex bug-wrap align-center">
+
+        <div id="heisenbug" class="bug-wrap align-center">
           <div class="ascii"> _ /-\ _<br/>´_| H |_`<br/>´  \_/  `</div>
           <div id="hbug-fix-progress" class="clickGroup progress-pie-chart" data-percent="0">
             <div class="ppc-progress">
@@ -45,7 +47,8 @@
           </div><br/>
           <p id="hbug-counter" class="counter">0</p>
         </div>
-        <div id="mandelbug" class="flex bug-wrap align-center">
+
+        <div id="mandelbug" class="bug-wrap align-center">
           <div class="ascii"> _ /-\ _<br/>´_| M |_`<br/>´  \_/  `</div>
           <div id="mbug-fix-progress" class="clickGroup progress-pie-chart" data-percent="0">
             <div class="ppc-progress">
@@ -55,7 +58,8 @@
           </div><br/>
           <p id="mbug-counter" class="counter">0</p>
         </div>
-        <div id="schroedinbug" class="flex bug-wrap align-center">
+
+        <div id="schroedinbug" class="bug-wrap align-center">
           <div class="ascii"> _ /-\ _<br/>´_| S |_`<br/>´  \_/  `</div>
           <div id="sbug-fix-progress" class="clickGroup progress-pie-chart" data-percent="0">
             <div class="ppc-progress">
@@ -65,6 +69,7 @@
           </div> <br/>
           <p id="sbug-counter" class="counter">0</p>
         </div>
+
       </div>
 
       <!-- 28 -->
@@ -93,7 +98,7 @@
       </div>
     </div>
     <div class="flex">
-      <div class="ascii">
+      <div id="" class="ascii">
         #############
         ############
         #############
@@ -162,6 +167,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         <p class="wp-headline">GET NEW EMPOYES</p>
       </div>
       <div class="wp-content flex wrap justify-between">
+        <button onclick="search('wp-workers', 'wp-search')">Back to Search</button>
         <div id="buy-worker-sk" class="worker-wrap">
           <div class="emp-type">Script Kiddy</div>
           <div class="emp-stats">
@@ -196,13 +202,13 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         <div class="worker-wrap">
           <div class="emp-type">Script Kiddy</div>
           <div class="emp-buy"><button onclick="skHelper.upgrade()">UPGRADE SCRIPT KIDDI</button></div>
-          <div class="emp-buy"><button onclick="skHelper.setTarget(1)">SET SCRIPT KIDDI TARGET TO BOHRBUG</button></div>
+          <div class="emp-buy"><button onclick="skHelper.set_target(1)">SET SCRIPT KIDDI TARGET TO BOHRBUG</button></div>
           <div class="emp-buy"><button onclick="skHelper.sell()">SELL SCRIPT KIDDI</button></div>
         </div>
         <div class="worker-wrap">
           <div class="emp-type">Monkey</div>
           <div class="emp-buy"><button onclick="monkey.upgrade()">UPGRADE MONKEY</button></div>
-          <div class="emp-buy"><button onclick="monkey.setTarget(1)">SET MONKEY TARGET TO BOHRBUG</button></div>
+          <div class="emp-buy"><button onclick="monkey.set_target(1)">SET MONKEY TARGET TO BOHRBUG</button></div>
           <div class="emp-buy"><button onclick="monkey.sell()">SELL MONKEY</button></div>
         </div>
       </div>
@@ -225,12 +231,12 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
       <p class="" stat="mbugTotal"></p>
       <p class="" stat="mbugFixTotal"></p>
     </div>
-    <button id="save-game" class="nav-elem" onclick="saveGame()">SAVE</button>
+    <button id="save-game" class="nav-elem" onclick="save_game()">SAVE</button>
   </section>
 
   <div id="debug-panel">
     <h2>DEBUG PANEL</h2>
-    <button onclick="storyIntroComplete()">STORY_INTRO_DONE = 1</button>
+    <button onclick="story_intro_complete()">STORY_INTRO_DONE = 1</button>
     <input type=""/>
   </div>
 

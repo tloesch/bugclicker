@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bug fix progress</title>
+	<style type="text/css">
+		.bug-wrap {
+			display: flex;
+			flex-wrap: wrap;
+			width: 400px;
+		}
+		.bug {
+			flex-grow: 0;
+			cursor: pointer;
+		}
+		.bug-wrap .bug-infos {
+			flex-grow: 2;
+			margin-left: 1em;
+		}
+		.name {
+			font-size:1.5em;
+			line-height: 0em;
+			margin: 1em 0em 0em 0em;
+		}
+		.count {
+			margin: 1	em 0em 0em 0em;
+		}
+		.prog {
+			margin: 0;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<section id="static">
+		<div id="ascii">
+			<h2>STATIC VERSION</h2>
+			
+			<div class="bug-wrap">
+<pre class="bug">
+ _ /-\ _
+´_| B |_`
+´  \_/  `
+</pre>
+<div class="bug-infos">
+	<p class="name">BOHRBUG</p>
+	<p class="count">274</p>
+</div>
+<pre class="prog">╟███████▍            ╢</pre>
+			</div>
+		</div>
+	</section><br/><br/>
+	<section id="productive">
+		<h2>PRODUCTIVE</h2>
+		<div class="bug-wrap">
+<pre class="bug">
+ _ /-\ _
+´_| B |_`
+´  \_/  `
+</pre>
+<div class="bug-infos">
+	<p class="name">BOHRBUG</p>
+	<p class="count">274</p>
+</div>
+<pre class="prog">╟███████▍            ╢</pre>
+		</div>
+	</section>
+	<script type="text/javascript">
+		// TODO:
+		// 		1. ONCLICK ON BUG
+		// 		2. UPCOUNTING COUNTER (every 2s)
+		// 		3. JS Set Name
+		// 		4. INCREASING PROGRESS BAR ON CLICK
+		// 		5. ON FULL PROGRESS BAR 
+		// 			-> RESET PROGRESS BAR
+		// 			-> DECREASE COUNTER
+
+		
+	</script>
+</body>
+</html>

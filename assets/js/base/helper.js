@@ -1,7 +1,7 @@
 var skHelper;
 var monkey;
 
-function initHelpers() {
+function init_helpers() {
   skHelper = new helper(
     "scriptkiddi",
     SKHELPER_AMOUNT,
@@ -28,7 +28,7 @@ helper.prototype.buy = function() {
   if(MONEY_AMOUNT >= this.cost) {
     this.amount += 1;
     MONEY_AMOUNT -= this.cost;
-    updateCounter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+    update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
     console.log(this.type + ": " + this.amount);
   }
 }
@@ -37,7 +37,7 @@ helper.prototype.sell = function() {
   if(this.amount > 0) {
     this.amount -= 1;
     MONEY_AMOUNT += this.cost * 0.8;
-    updateCounter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+    update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
   }
 }
 
@@ -48,13 +48,13 @@ helper.prototype.upgrade = function() {
       MONEY_AMOUNT -= this.upgradeCost;
       this.upgradeCost += this.upgradeCost * 0.5;
       console.log("UPGRADE COST: " + this.upgradeCost);
-      updateCounter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+      update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
   }
 
   // console.log("HELPER UPGRADET: "+ this.level);
 }
 
-helper.prototype.setTarget = function(t) {
+helper.prototype.set_target = function(t) {
   this.bugTarget = t;
 }
 

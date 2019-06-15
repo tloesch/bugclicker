@@ -1,6 +1,6 @@
 function addBug() {
   BUG_AMOUNT += BUG_AUTO_ADD;
-  updateCounter(SCREEN_BUG_COUNTER, BUG_AMOUNT);
+  update_counter(SCREEN_BUG_COUNTER, BUG_AMOUNT);
   return;
 }
 
@@ -16,11 +16,11 @@ function fixBug(kind) {
       BUG_FIX_POINTS_AMOUNT = 0;
       BUG_AMOUNT -= BUG_FIX_POINTS_ADD;
       BUG_FIX_AMOUNT += BUG_FIX_ADD;
-      updateCounter(SCREEN_BUG_COUNTER, BUG_AMOUNT);
-      addMoney(BUG_FIX_REWARD);
+      update_counter(SCREEN_BUG_COUNTER, BUG_AMOUNT);
+      add_money(BUG_FIX_REWARD);
     }
     if(tempBugFixA != BUG_FIX_POINTS_AMOUNT) {
-      updateProgressbar(SCREEN_BUG_FIX_PROGRESS, BUG_FIX_POINTS_AMOUNT, BUG_FIX_POINTS_REQUIRED);
+      update_progressbar(SCREEN_BUG_FIX_PROGRESS, BUG_FIX_POINTS_AMOUNT, BUG_FIX_POINTS_REQUIRED);
     }
   }
 }
@@ -37,11 +37,11 @@ function fixBBug(kind) {
       BUG_FIX_POINTS_AMOUNT = 0;
       BUG_AMOUNT -= BUG_FIX_POINTS_ADD;
       BUG_FIX_AMOUNT += BUG_FIX_ADD;
-      updateCounter(SCREEN_BUG_COUNTER, BUG_AMOUNT);
-      addMoney(BUG_FIX_REWARD);
+      update_counter(SCREEN_BUG_COUNTER, BUG_AMOUNT);
+      add_money(BUG_FIX_REWARD);
     }
     if(tempBugFixA != BUG_FIX_POINTS_AMOUNT) {
-      updateProgressbar(SCREEN_BUG_FIX_PROGRESS, BUG_FIX_POINTS_AMOUNT, BUG_FIX_POINTS_REQUIRED);
+      update_progressbar(SCREEN_BUG_FIX_PROGRESS, BUG_FIX_POINTS_AMOUNT, BUG_FIX_POINTS_REQUIRED);
     }
   }
 }
@@ -58,11 +58,11 @@ function fixHBug(kind) {
       HBUG_FIX_POINTS_AMOUNT = 0;
       HBUG_AMOUNT -= HBUG_FIX_POINTS_ADD;
       HBUG_FIX_AMOUNT += HBUG_FIX_ADD;
-      updateCounter(SCREEN_HBUG_COUNTER, HBUG_AMOUNT);
-      addMoney(HBUG_FIX_REWARD);
+      update_counter(SCREEN_HBUG_COUNTER, HBUG_AMOUNT);
+      add_money(HBUG_FIX_REWARD);
     }
     if(tempBugFixA != HBUG_FIX_POINTS_AMOUNT) {
-      updateProgressbar(SCREEN_HBUG_FIX_PROGRESS, HBUG_FIX_POINTS_AMOUNT, HBUG_FIX_POINTS_REQUIRED);
+      update_progressbar(SCREEN_HBUG_FIX_PROGRESS, HBUG_FIX_POINTS_AMOUNT, HBUG_FIX_POINTS_REQUIRED);
     }
   }
 }

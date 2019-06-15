@@ -6,48 +6,44 @@ $(document).ready(function(){
 // TODO: ADD AUTO FIXERS
 
 function init() {
-  setScreenVariables();
-  loadSaveGame();
-  startTimers();
-  drawWorld();
-  initNavigation();
+  set_screen_variables();
+  load_save_game();
+  start_timers();
+  draw_world();
+  init_navigation();
 }
 
 /*###############
   TIMED FUNCTIONS
   ###############*/
 
-function startTimers() {
+function start_timers() {
   setInterval(function() {bbug.add();}, bbug.autoTimer);
+  if(hbug.activ == 1){hbug.activate();}
   setInterval(function() {skHelper.work();}, skHelper.timer);
-  setInterval(function() {enableBug();}, 1000);
-  // startTimer(fixBug('auto'), BUG_FIX_AUTO_TIMER);
+  setInterval(function() {activateBug();}, 1000);
   if(OPTION_AUTO_SAVE_TOGGLE) {
-    startTimer(saveGame, OPTION_AUTO_SAVE_TIMER);
+    setInterval(function(){save_game();}, OPTION_AUTO_SAVE_TIMER);
   }
-}
-
-function startTimer(func, time) {
-  setInterval(func, time);
 }
 
 /*###############
   MONEY FUNCTIONS
   ###############*/
-function addMoney(reward) {
+function add_money(reward) {
   MONEY_AMOUNT += reward;
-  updateCounter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+  update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
 }
 
-function refreshMoney() {
-  updateCounter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+function refresh_money() {
+  update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
 }
 
 /*##############
   DRAW FUNCTIONS
   ##############*/
 
-function drawWorld() {
+function draw_world() {
 
 }
 
@@ -55,13 +51,13 @@ function drawInfo() {
 
 }
 
-function drawDebugPanel() {
+function draw_debug_panel() {
   if(DEBUG_PANEL_TOGGLE) {
     document.getElementById('debug-panel').innerHTML = "<div></div>";
   }
 }
 
-function initNavigation() {
+function init_navigation() {
   var homeElem = document.getElementById('nav-home');
   var cityElem = document.getElementById('nav-city');
   var internetElem = document.getElementById('nav-internet');
@@ -167,7 +163,7 @@ function initNavigation() {
   STORY FUNCTIONS
   ###############*/
 
-function storyIntroComplete() {
+function story_intro_complete() {
   STORY_INTRO_DONE = 1;
   BUG_AUTO_ADD = 1;
   return;
@@ -177,7 +173,7 @@ function storyIntroComplete() {
   SAVE GAME FUNCIONS
   ##################*/
 
-function loadSaveGame() {
+function load_save_game() {
   var dataJSON;
   var userId = USER_ID;
   $.ajax({
@@ -192,42 +188,90 @@ function loadSaveGame() {
       var dataObj = JSON.parse(data);
       // for(var key in dataObj) {
         // if(key.startsWith('bohrbug_')) {
-          BBUG_DATA["amount"] = dataObj.bohrbug_amount;
-          BBUG_DATA["autoAdd"] = dataObj.bohrbug_autoAdd;
-          BBUG_DATA["autoTimer"] = dataObj.bohrbug_autoTimer;
-          BBUG_DATA["fixAmount"] = dataObj.bohrbug_fixAmount;
-          BBUG_DATA["fixAdd"] = dataObj.bohrbug_fixAdd;
-          BBUG_DATA["fixReward"] = dataObj.bohrbug_fixReward;
-          BBUG_DATA["fixAutoTimer"] = dataObj.bohrbug_fixAutoTimer;
-          BBUG_DATA["fixPointsAmount"] = dataObj.bohrbug_fixPointsAmount;
-          BBUG_DATA["fixPointsAdd"] = dataObj.bohrbug_fixPointsAdd;
-          BBUG_DATA["fixPointsAutoAdd"] = dataObj.bohrbug_fixPointsAutoAdd;
-          BBUG_DATA["fixPointsReq"] = dataObj.bohrbug_fixPointsReq;
-/*
-          BUG_AMOUNT = dataObj.bohrbug_amount;
-          BUG_AUTO_ADD = dataObj.bohrbug_autoAdd;
-          BUG_AUTO_TIMER = dataObj.bohrbug_autoTimer;
-          BUG_FIX_AMOUNT = dataObj.bohrbug_fixAmount;
-          BUG_FIX_ADD = dataObj.bohrbug_fixAdd;
-          BUG_FIX_REWARD = dataObj.bohrbug_fixReward;
-          BUG_FIX_AUTO_TIMER = dataObj.bohrbug_fixAutoTimer;
-          BUG_FIX_POINTS_AMOUNT = dataObj.bohrbug_fixPointsAmount;
-          BUG_FIX_POINTS_ADD = dataObj.bohrbug_fixPointsAdd;
-          BUG_FIX_POINTS_AUTO_ADD = dataObj.bohrbug_fixPointsAutoAdd;
-          BUG_FIX_POINTS_REQUIRED = dataObj.bohrbug_fixPointsReq;
-*/
+
+        // TODO: change to loop
+        // IDEA: create call to get all instanted bugs and retrieve there type. Loop through that types
+          if(dataObj.bohrbug) {
+            BBUG_DATA["amount"] = dataObj.bohrbug.amount;
+            BBUG_DATA["activ"] = dataObj.bohrbug.activ;
+            BBUG_DATA["autoAdd"] = dataObj.bohrbug.autoAdd;
+            BBUG_DATA["autoTimer"] = dataObj.bohrbug.autoTimer;
+            BBUG_DATA["fixAmount"] = dataObj.bohrbug.fixAmount;
+            BBUG_DATA["fixAdd"] = dataObj.bohrbug.fixAdd;
+            BBUG_DATA["fixReward"] = dataObj.bohrbug.fixReward;
+            BBUG_DATA["fixAutoTimer"] = dataObj.bohrbug.fixAutoTimer;
+            BBUG_DATA["fixPointsAmount"] = dataObj.bohrbug.fixPointsAmount;
+            BBUG_DATA["fixPointsAdd"] = dataObj.bohrbug.fixPointsAdd;
+            BBUG_DATA["fixPointsAutoAdd"] = dataObj.bohrbug.fixPointsAutoAdd;
+            BBUG_DATA["fixPointsReq"] = dataObj.bohrbug.fixPointsReq;
+          }
+
+          if(dataObj.heisenbug) {
+            HBUG_DATA["amount"] = dataObj.heisenbug.amount;
+            HBUG_DATA["activ"] = dataObj.heisenbug.activ;
+            HBUG_DATA["autoAdd"] = dataObj.heisenbug.autoAdd;
+            HBUG_DATA["autoTimer"] = dataObj.heisenbug.autoTimer;
+            HBUG_DATA["fixAmount"] = dataObj.heisenbug.fixAmount;
+            HBUG_DATA["fixAdd"] = dataObj.heisenbug.fixAdd;
+            HBUG_DATA["fixReward"] = dataObj.heisenbug.fixReward;
+            HBUG_DATA["fixAutoTimer"] = dataObj.heisenbug.fixAutoTimer;
+            HBUG_DATA["fixPointsAmount"] = dataObj.heisenbug.fixPointsAmount;
+            HBUG_DATA["fixPointsAdd"] = dataObj.heisenbug.fixPointsAdd;
+            HBUG_DATA["fixPointsAutoAdd"] = dataObj.heisenbug.fixPointsAutoAdd;
+            HBUG_DATA["fixPointsReq"] = dataObj.heisenbug.fixPointsReq;
+          }
+
+          if(dataObj.mandelbug) {
+            MBUG_DATA["amount"] = dataObj.mandelbug.amount;
+            MBUG_DATA["activ"] = dataObj.mandelbug.activ;
+            MBUG_DATA["autoAdd"] = dataObj.mandelbug.autoAdd;
+            MBUG_DATA["autoTimer"] = dataObj.mandelbug.autoTimer;
+            MBUG_DATA["fixAmount"] = dataObj.mandelbug.fixAmount;
+            MBUG_DATA["fixAdd"] = dataObj.mandelbug.fixAdd;
+            MBUG_DATA["fixReward"] = dataObj.mandelbug.fixReward;
+            MBUG_DATA["fixAutoTimer"] = dataObj.mandelbug.fixAutoTimer;
+            MBUG_DATA["fixPointsAmount"] = dataObj.mandelbug.fixPointsAmount;
+            MBUG_DATA["fixPointsAdd"] = dataObj.mandelbug.fixPointsAdd;
+            MBUG_DATA["fixPointsAutoAdd"] = dataObj.mandelbug.fixPointsAutoAdd;
+            MBUG_DATA["fixPointsReq"] = dataObj.mandelbug.fixPointsReq;
+          }
+
+          if(dataObj.schroedinbug) {
+            SBUG_DATA["amount"] = dataObj.schroedinbug.amount;
+            SBUG_DATA["activ"] = dataObj.schroedinbug.activ;
+            SBUG_DATA["autoAdd"] = dataObj.schroedinbug.autoAdd;
+            SBUG_DATA["autoTimer"] = dataObj.schroedinbug.autoTimer;
+            SBUG_DATA["fixAmount"] = dataObj.schroedinbug.fixAmount;
+            SBUG_DATA["fixAdd"] = dataObj.schroedinbug.fixAdd;
+            SBUG_DATA["fixReward"] = dataObj.schroedinbug.fixReward;
+            SBUG_DATA["fixAutoTimer"] = dataObj.schroedinbug.fixAutoTimer;
+            SBUG_DATA["fixPointsAmount"] = dataObj.schroedinbug.fixPointsAmount;
+            SBUG_DATA["fixPointsAdd"] = dataObj.schroedinbug.fixPointsAdd;
+            SBUG_DATA["fixPointsAutoAdd"] = dataObj.schroedinbug.fixPointsAutoAdd;
+            SBUG_DATA["fixPointsReq"] = dataObj.schroedinbug.fixPointsReq;
+          }
+
         // }else {
           USER_WORLD_POS = dataObj.userWPos;
           OPTION_AUTO_SAVE_TIMER = dataObj.optASTimer;
           OPTION_AUTO_SAVE_TOGGLE = dataObj.optASToggle;
-          HBUG_ENABELT = dataObj.hbugEnabelt;
+          HBUG_activ = dataObj.hbugactiv;
           MONEY_AMOUNT = dataObj.moneyA;
           STORY_INTRO_DONE = dataObj.storyIntroD;
-          // console.log(key + ":  "+ dataObj[key]);
 
-          initBugs();
-          initHelpers();
-          refreshAllScreenElements();
+          STATS_DATA["moneyTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["bbugTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["bbugFixTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["hbugTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["hugFixTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["mbugTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["mbugFixTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["sbugTotal"] = dataObj.statMoneyTotal;
+          STATS_DATA["sbugFixTotal"] = dataObj.statMoneyTotal;
+
+          init_bugs();
+          init_helpers();
+          refresh_all_screen_elements();
         // }
       // // }
     },
@@ -235,8 +279,8 @@ function loadSaveGame() {
   });
 }
 
-function saveGame() {
-  var saveData = getSaveData();
+function save_game() {
+  var saveData = get_save_data();
   $.ajax({
     url: 'assets/php/main.php',
     type: 'POST',
@@ -253,19 +297,22 @@ function saveGame() {
   return;
 }
 
-function getSaveData() {
+function get_save_data() {
   var saveDataObj = {
     "userId":USER_ID,
     "userWPos":USER_WORLD_POS,
     "optASTimer":OPTION_AUTO_SAVE_TIMER,
     "optASToggle":OPTION_AUTO_SAVE_TOGGLE,
-    "hbugEnabelt":HBUG_ENABELT,
     "moneyA":MONEY_AMOUNT,
     "storyIntroD":STORY_INTRO_DONE
   };
-  var bbugSave = bbug.getSaveDataObj();
-  var fullsaveDataObj = $.extend({}, saveDataObj, bbugSave);
-
+  var bbugSave = bbug.get_save_data_obj();
+  var hbugSave = hbug.get_save_data_obj();
+  var mbugSave = mbug.get_save_data_obj();
+  var sbugSave = sbug.get_save_data_obj();
+  //TODO: improve
+  var saveDataObjstate1 = $.extend({}, saveDataObj, bbugSave);
+  var fullsaveDataObj = $.extend({}, saveDataObjstate1, hbugSave);
   return JSON.stringify(fullsaveDataObj);
 }
 
@@ -276,22 +323,3 @@ function validateSaveGame() {
 function autoSave() {
   return;
 }
-
-/*###############
-  DEBUG/TEST FUNCTIONS
-  ###############*/
-//
-// function protoTest(v1, v2) {
-//   this.p1 = v1;
-//   this.p2 = v2;
-// }
-//
-// protoTest.prototype.say = function() {
-//   console.log("p1= "+this.p1+" p2= "+this.p2);
-// }
-//
-// var a = new protoTest("hallo", "welt!");
-// a.say();
-// var a = new protoTest("hallo2", "welt!2");
-// var b = new protoTest("b", "e");
-// a.say();b.say();
