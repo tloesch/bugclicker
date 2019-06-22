@@ -1,3 +1,6 @@
+@font-face {
+  font-family: "freemono";
+  src: url("../fonts/FreeMono.ttf"), url("../fonts/FreeMono.otf"); }
 button:hover, .nav-elem {
   cursor: pointer; }
 
@@ -7,7 +10,7 @@ button::-moz-focus-inner {
   border: 0; }
 
 .flex, .active {
-  display: flex; }
+  display: flex !important; }
   .flex.justify-start, .active.justify-start {
     justify-content: flex-start; }
   .flex.justify-center, .active.justify-center {
@@ -46,10 +49,18 @@ button::-moz-focus-inner {
 .t-align-right {
   text-align: right; }
 
-.ascii {
+.ascii, pre {
   white-space: pre;
-  font-family: monospace;
-  cursor: default; }
+  font-family: "freemono";
+  cursor: default;
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -khtml-user-select: none;
+  /* webkit (konqueror) browsers */
+  -ms-user-select: none;
+  /* IE10+ */ }
 
 .ascii-trigger {
   cursor: pointer; }
@@ -57,33 +68,52 @@ button::-moz-focus-inner {
 .bug-wrap {
   margin: 10px 0px;
   display: none; }
-  .bug-wrap.activ {
-    display: flex; }
-  .bug-wrap .ascii {
-    position: relative;
-    margin-right: 10px;
+  .bug-wrap .bug {
+    flex-grow: 0;
     cursor: pointer; }
-    .bug-wrap .ascii:hover::after {
-      content: "DEFAULT";
-      background-color: #eee;
-      position: absolute;
-      left: 0;
-      bottom: 0; }
-  .bug-wrap .counter {
-    margin-right: 10px; }
+  .bug-wrap .bug-infos {
+    flex-grow: 2;
+    margin-left: 1em; }
+    .bug-wrap .bug-infos .name {
+      font-size: 1.5em;
+      line-height: 0em;
+      margin: 1em 0em 0em 0em; }
+    .bug-wrap .bug-infos .count {
+      margin: 1 em 0em 0em 0em; }
+  .bug-wrap .progress {
+    margin: 0;
+    width: 100%; }
 
-#bohrbug .ascii:hover::after {
-  content: "BOHRBUG"; }
-
-#heisenbug .ascii:hover::after {
-  content: "HEISENBUG"; }
-
-#mandelbug .ascii:hover::after {
-  content: "MANDELBUG"; }
-
-#schroedinbug .ascii:hover::after {
-  content: "SCHROEDINBUG"; }
-
+/*
+#bohrbug {
+  .ascii:hover {
+    &::after {
+      content: "BOHRBUG";
+    }
+  }
+}
+#heisenbug {
+  .ascii:hover {
+    &::after {
+      content: "HEISENBUG";
+    }
+  }
+}
+#mandelbug {
+  .ascii:hover {
+    &::after {
+      content: "MANDELBUG";
+    }
+  }
+}
+#schroedinbug {
+  .ascii:hover {
+    &::after {
+      content: "SCHROEDINBUG";
+    }
+  }
+}
+*/
 .nav-wrap {
   width: 70%;
   margin: 0 auto; }
@@ -163,10 +193,10 @@ section {
 .ppc-percents {
   position: absolute;
   border-radius: 50%;
-  left: calc(50% - 43.47826px/2);
-  top: calc(50% - 43.47826px/2);
-  width: 43.47826px;
-  height: 43.47826px;
+  left: calc(50% - 43.4782608696px/2);
+  top: calc(50% - 43.4782608696px/2);
+  width: 43.4782608696px;
+  height: 43.4782608696px;
   background: #fff;
   text-align: center;
   border: none; }

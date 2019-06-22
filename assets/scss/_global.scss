@@ -1,3 +1,8 @@
+ @font-face {
+  font-family: "freemono";
+  src: url("../fonts/FreeMono.ttf"),url("../fonts/FreeMono.otf");
+}
+
 button:hover, .nav-elem {
   cursor: pointer;
 }
@@ -11,7 +16,7 @@ button {
 }
 
 .flex, .active {
-  display: flex;
+  display: flex!important;
 
   &.justify-start {justify-content: flex-start;}
   &.justify-center {justify-content: center;}
@@ -43,10 +48,14 @@ button {
   text-align: right;
 }
 
-.ascii {
+.ascii, pre {
   white-space: pre;
-  font-family: monospace;
+  font-family: "freemono";
   cursor: default;
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
 }
 .ascii-trigger {
   cursor: pointer;

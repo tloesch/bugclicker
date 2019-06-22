@@ -3,8 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>User Level Prototype</title>
+	<link rel="stylesheet" type="text/css" href="http://localhost/bugclicker/assets/css/styles.css">
 	<style type="text/css">
 		#static{float:left;padding-right:50px;margin-right: 50px;border-right:2px solid black;}#dynamic{float:left;}
+		pre {font-family: "freemono";}
+		section{display: block!important;}
 	</style>
 </head>
 <body>
@@ -13,7 +16,7 @@
 			<h2>STATIC VERSION</h2>
 			<pre>
 ╔════════════════════╦═════╗
-╟███████▍            ╢ LVL ║
+╟▉▉▉▉▉▉         ╢ LVL ║
 ╚════════════════════╩═════╝
  STRING_LEVEL_TITLE
 
@@ -29,11 +32,9 @@ INNER WIDTH: 20 chars
 ╢ = 9570
 ╦ = 9574
 ╩ = 9577
-█ = 9608
 ▉ = 9609
 ▊ = 9610
 ▋ = 9611
-▌ = 9612
 ▍ = 9613
 ▎ = 9614
 ▏ = 9615
@@ -48,17 +49,17 @@ INNER WIDTH: 20 chars
 		</div>
 	</section>
 	<script type="text/javascript">
-		
-
-		var max_level = 20;
+		const max_level = 20;
 		
 		var user_level = 0;
 
 		var user_level_progress = 0;
 		var level_requirement = 100;
 		var increaser = 1;
+		
 		// TIMER JUST FOR TESTING
 		var timer = setInterval(function() {
+			//clearInterval(timer);
 			user_level_progress += increaser;
 			if (user_level_progress >= level_requirement) {
 					level_requirement += 50;
@@ -85,18 +86,20 @@ INNER WIDTH: 20 chars
 				[10,14,"Middel class level"],
 				[15,20,"Max level title"],
 			];
-			var border_parts = ["═","║","╔","╗","╚","╝","╟","╢","╦","╩"];
-			var progress_parts = [" ","▏","▎","▍","▌","▋","▊","▉","█"];
+			const border_parts = ["═","║","╔","╗","╚","╝","╟","╢","╦","╩"];
+			const progress_parts = [" ","▏","▎","▍","▋","▊","▉"];
 
 			var lvl_length = lvl.toString().length;
 			var lvl_border_part = "═".repeat(lvl_length);
+
+			const progress_length = 20;
 
 			var top_part = "╔════════════════════╦═" + lvl_border_part + "═╗";
 			var bottom_part = "╚════════════════════╩═" + lvl_border_part + "═╝";
 
 			// CONVERT PROGRESS TO ASCII
 			// size of full sections
-			var full_sections_size = requirement / 20;
+			var full_sections_size = (requirement / progress_length);
 			// amout of filled sections
 			var full_sections_count = Math.floor(progress / full_sections_size);
 			// remaining progress
@@ -106,27 +109,26 @@ INNER WIDTH: 20 chars
 			// progress of section
 			var full_part_count = Math.floor(remain_progress / section_part_size);
 			// progress filler
-			if(full_sections_count == 20) {
+			if(full_sections_count == progress_length) {
 				var progress_filler = "";
 			}else {
-				var progress_filler = " ".repeat((20 - full_sections_count) - 1);
+				console.log(full_sections_count);
+				if(full_sections_count % 2 == 0) {
+					var progress_filler = " ".repeat((20 - full_sections_count));
+				}
+				var progress_filler = " ".repeat((20 - full_sections_count - 1));
 			}
-			
-			
 
-			//console.log(full_sections_count);
-			//console.log(remain_progress);
-			//console.log(section_part_size);
-			//console.log(full_part_count);
-			//console.log(progress_filler.length);
+			var progress_part = "╟" + progress_parts[progress_parts.length - 1].repeat(full_sections_count) + progress_parts[full_part_count];
+			var progress_end = progress_filler + "╢ " + lvl + " ║";
 
-			var progress_part = "╟" + progress_parts[7].repeat(full_sections_count) + progress_parts[full_part_count] + progress_filler + "╢ " + lvl + " ║";
+			console.log(full_sections_count);
+			console.log(progress_end);
 
 			var lvl_elem = document.getElementById("lvl");
 
 			// get level title
 			var level_title = "FILLER";
-			// TODO: SET MAX LEVEL
 			level_titles.some(function(elem){
 				if(elem[0] <= lvl && elem[1] >= lvl) {
 					level_title = elem[2];
@@ -134,7 +136,7 @@ INNER WIDTH: 20 chars
 				}
 			})
 
-			lvl_elem.innerHTML = top_part + "\n" + progress_part + "\n" + bottom_part + "\n " + level_title;
+			lvl_elem.innerHTML = top_part + "\n" + progress_part + progress_end + "\n" + bottom_part + "\n " + level_title;
 		}
 
 	</script>

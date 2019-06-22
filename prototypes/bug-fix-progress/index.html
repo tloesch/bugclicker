@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bug fix progress</title>
+	<link rel="stylesheet" type="text/css" href="http://localhost/bugclicker/assets/css/styles.css">
 	<style type="text/css">
 		.bug-wrap {
 			display: flex;
@@ -29,6 +30,11 @@
 			margin: 0;
 			width: 100%;
 		}
+		pre {font-family: "freemono";-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */}
+		section{display: block;}
 	</style>
 </head>
 <body>
@@ -39,33 +45,43 @@
 			<div class="bug-wrap">
 <pre class="bug">
  _ /-\ _
-´_| B |_`
+´_| S |_`
 ´  \_/  `
 </pre>
 <div class="bug-infos">
 	<p class="name">BOHRBUG</p>
 	<p class="count">274</p>
 </div>
-<pre class="prog">╟███████▍            ╢</pre>
+<pre class="prog">╟▉▉▉▉▉▉▉             ╢</pre>
 			</div>
 		</div>
 	</section><br/><br/>
+
+
 	<section id="productive">
 		<h2>PRODUCTIVE</h2>
 		<div class="bug-wrap">
 <pre class="bug">
  _ /-\ _
-´_| B |_`
+´_| P |_`
 ´  \_/  `
 </pre>
 <div class="bug-infos">
 	<p class="name">BOHRBUG</p>
 	<p class="count">274</p>
 </div>
-<pre class="prog">╟███████▍            ╢</pre>
+<pre class="prog">╟····················╢</pre>
 		</div>
 	</section>
+
+
 	<script type="text/javascript">
+		var Pbug_progress = 0;
+		var Pbug_amount = 100;
+		var req = 100;
+		var increaser = 1;
+
+
 		// TODO:
 		// 		1. ONCLICK ON BUG
 		// 		2. UPCOUNTING COUNTER (every 2s)
@@ -75,7 +91,59 @@
 		// 			-> RESET PROGRESS BAR
 		// 			-> DECREASE COUNTER
 
-		
+		const bugs = document.querySelectorAll('.bug-wrap');
+
+		bugs.forEach(function(bug) {
+			console.log(bug.querySelector('.bug'));
+			bug.querySelector('.bug').addEventListener("click", function() {
+				Pbug_progress += increaser;
+				if (Pbug_progress >= req) {
+					req += 50;
+					Pbug_amount -= 1;
+					Pbug_progress = 0;
+					increaser += 5;
+					update_amount(bug, Pbug_amount);
+				}
+				generate_element(bug, Pbug_progress, req);
+			})
+		});
+
+		function generate_element(bug, progress, requirement) {
+			const progress_parts = ["·","▏","▎","▍","▋","▊","▉"];
+			const progress_length = 20;
+
+			// size of full sections
+			var full_sections_size = (requirement / progress_length);
+			// amout of filled sections
+			var full_sections_count = Math.floor(progress / full_sections_size);
+			// remaining progress
+			var remain_progress = progress % full_sections_size;
+			// size of section parts
+			var section_part_size = full_sections_size / progress_parts.length;
+			// progress of section
+			var full_part_count = Math.floor(remain_progress / section_part_size);
+			// progress filler
+			if(full_sections_count == progress_length) {
+				var progress_filler = "";
+			}else {
+				console.log(full_sections_count);
+				if(full_sections_count % 2 == 0) {
+					var progress_filler = "·".repeat((20 - full_sections_count));
+				}
+				var progress_filler = "·".repeat((20 - full_sections_count - 1));
+			}
+
+			var progress_part = progress_parts[progress_parts.length - 1].repeat(full_sections_count) + progress_parts[full_part_count] + progress_filler;
+
+			var prog_elem = bug.querySelector(".prog");
+
+			prog_elem.innerHTML = "╟" + progress_part + "╢";
+		}
+		function update_amount(bug, amount) {
+			b_elem = bug.querySelector(".count");
+			b_elem.innerHTML = amount;
+		}
+		console.log(bugs);
 	</script>
 </body>
 </html>
