@@ -59,8 +59,8 @@ helper.prototype.set_target = function(t) {
 }
 
 helper.prototype.work = function() {
-  if(this.amount != 0) {
-    // console.log("IN WORK: " + this.bugTarget);
+  for(let i = 0; i < this.amount; i++) {
+    console.log("Helper "+this.type+"#"+i+" works on: " + this.bugTarget);
     var points = (this.pointsAdd * this.amount) * (this.level / 4);
     switch (this.bugTarget) {
       case 0:
