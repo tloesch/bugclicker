@@ -182,9 +182,6 @@ function get_params(req_param = "") {
   }
   if(req_param == "") {
     return params;
-  }
-  if(typeof params[req_param] === 'undefined'){
-    return "Required parameter is undefined";
   }else {
     return params[req_param];
   }
@@ -195,108 +192,123 @@ function get_params(req_param = "") {
 function load_save_game() {
   var dataJSON;
   var userId = get_params("uid");
+
+  if(typeof userId === "undefined") {
+    userId = 0;
+  }
+
+  USER["id"] = userId;
+
   $.ajax({
     url: '/php/main.php',
     type: 'POST',
     async: false,
     data: {
       task: "loadGame",
-      uid: userId,
+      uid: USER["id"],
     },
     success: function(data) {
+      console.log(data);
       var dataObj = JSON.parse(data);
-      // for(var key in dataObj) {
+      if(typeof dataObj.newGameCreated === "undefined") {
+
+        // for(var key in dataObj) {
         // if(key.startsWith('bohrbug_')) {
 
         // TODO: change to loop
         // IDEA: create call to get all instanted bugs and retrieve there type. Loop through that types
-          if(dataObj.bohrbug) {
-            BBUG_DATA["amount"] = dataObj.bohrbug.amount;
-            BBUG_DATA["activ"] = dataObj.bohrbug.activ;
-            BBUG_DATA["autoAdd"] = dataObj.bohrbug.autoAdd;
-            BBUG_DATA["autoTimer"] = dataObj.bohrbug.autoTimer;
-            BBUG_DATA["fixAmount"] = dataObj.bohrbug.fixAmount;
-            BBUG_DATA["fixAdd"] = dataObj.bohrbug.fixAdd;
-            BBUG_DATA["fixReward"] = dataObj.bohrbug.fixReward;
-            BBUG_DATA["fixAutoTimer"] = dataObj.bohrbug.fixAutoTimer;
-            BBUG_DATA["fixPointsAmount"] = dataObj.bohrbug.fixPointsAmount;
-            BBUG_DATA["fixPointsAdd"] = dataObj.bohrbug.fixPointsAdd;
-            BBUG_DATA["fixPointsAutoAdd"] = dataObj.bohrbug.fixPointsAutoAdd;
-            BBUG_DATA["fixPointsReq"] = dataObj.bohrbug.fixPointsReq;
-          }
+        if(dataObj.bohrbug) {
+          BBUG_DATA["amount"] = dataObj.bohrbug.amount;
+          BBUG_DATA["activ"] = dataObj.bohrbug.activ;
+          BBUG_DATA["autoAdd"] = dataObj.bohrbug.autoAdd;
+          BBUG_DATA["autoTimer"] = dataObj.bohrbug.autoTimer;
+          BBUG_DATA["fixAmount"] = dataObj.bohrbug.fixAmount;
+          BBUG_DATA["fixAdd"] = dataObj.bohrbug.fixAdd;
+          BBUG_DATA["fixReward"] = dataObj.bohrbug.fixReward;
+          BBUG_DATA["fixAutoTimer"] = dataObj.bohrbug.fixAutoTimer;
+          BBUG_DATA["fixPointsAmount"] = dataObj.bohrbug.fixPointsAmount;
+          BBUG_DATA["fixPointsAdd"] = dataObj.bohrbug.fixPointsAdd;
+          BBUG_DATA["fixPointsAutoAdd"] = dataObj.bohrbug.fixPointsAutoAdd;
+          BBUG_DATA["fixPointsReq"] = dataObj.bohrbug.fixPointsReq;
+        }
 
-          if(dataObj.heisenbug) {
-            HBUG_DATA["amount"] = dataObj.heisenbug.amount;
-            HBUG_DATA["activ"] = dataObj.heisenbug.activ;
-            HBUG_DATA["autoAdd"] = dataObj.heisenbug.autoAdd;
-            HBUG_DATA["autoTimer"] = dataObj.heisenbug.autoTimer;
-            HBUG_DATA["fixAmount"] = dataObj.heisenbug.fixAmount;
-            HBUG_DATA["fixAdd"] = dataObj.heisenbug.fixAdd;
-            HBUG_DATA["fixReward"] = dataObj.heisenbug.fixReward;
-            HBUG_DATA["fixAutoTimer"] = dataObj.heisenbug.fixAutoTimer;
-            HBUG_DATA["fixPointsAmount"] = dataObj.heisenbug.fixPointsAmount;
-            HBUG_DATA["fixPointsAdd"] = dataObj.heisenbug.fixPointsAdd;
-            HBUG_DATA["fixPointsAutoAdd"] = dataObj.heisenbug.fixPointsAutoAdd;
-            HBUG_DATA["fixPointsReq"] = dataObj.heisenbug.fixPointsReq;
-          }
+        if(dataObj.heisenbug) {
+          HBUG_DATA["amount"] = dataObj.heisenbug.amount;
+          HBUG_DATA["activ"] = dataObj.heisenbug.activ;
+          HBUG_DATA["autoAdd"] = dataObj.heisenbug.autoAdd;
+          HBUG_DATA["autoTimer"] = dataObj.heisenbug.autoTimer;
+          HBUG_DATA["fixAmount"] = dataObj.heisenbug.fixAmount;
+          HBUG_DATA["fixAdd"] = dataObj.heisenbug.fixAdd;
+          HBUG_DATA["fixReward"] = dataObj.heisenbug.fixReward;
+          HBUG_DATA["fixAutoTimer"] = dataObj.heisenbug.fixAutoTimer;
+          HBUG_DATA["fixPointsAmount"] = dataObj.heisenbug.fixPointsAmount;
+          HBUG_DATA["fixPointsAdd"] = dataObj.heisenbug.fixPointsAdd;
+          HBUG_DATA["fixPointsAutoAdd"] = dataObj.heisenbug.fixPointsAutoAdd;
+          HBUG_DATA["fixPointsReq"] = dataObj.heisenbug.fixPointsReq;
+        }
 
-          if(dataObj.mandelbug) {
-            MBUG_DATA["amount"] = dataObj.mandelbug.amount;
-            MBUG_DATA["activ"] = dataObj.mandelbug.activ;
-            MBUG_DATA["autoAdd"] = dataObj.mandelbug.autoAdd;
-            MBUG_DATA["autoTimer"] = dataObj.mandelbug.autoTimer;
-            MBUG_DATA["fixAmount"] = dataObj.mandelbug.fixAmount;
-            MBUG_DATA["fixAdd"] = dataObj.mandelbug.fixAdd;
-            MBUG_DATA["fixReward"] = dataObj.mandelbug.fixReward;
-            MBUG_DATA["fixAutoTimer"] = dataObj.mandelbug.fixAutoTimer;
-            MBUG_DATA["fixPointsAmount"] = dataObj.mandelbug.fixPointsAmount;
-            MBUG_DATA["fixPointsAdd"] = dataObj.mandelbug.fixPointsAdd;
-            MBUG_DATA["fixPointsAutoAdd"] = dataObj.mandelbug.fixPointsAutoAdd;
-            MBUG_DATA["fixPointsReq"] = dataObj.mandelbug.fixPointsReq;
-          }
+        if(dataObj.mandelbug) {
+          MBUG_DATA["amount"] = dataObj.mandelbug.amount;
+          MBUG_DATA["activ"] = dataObj.mandelbug.activ;
+          MBUG_DATA["autoAdd"] = dataObj.mandelbug.autoAdd;
+          MBUG_DATA["autoTimer"] = dataObj.mandelbug.autoTimer;
+          MBUG_DATA["fixAmount"] = dataObj.mandelbug.fixAmount;
+          MBUG_DATA["fixAdd"] = dataObj.mandelbug.fixAdd;
+          MBUG_DATA["fixReward"] = dataObj.mandelbug.fixReward;
+          MBUG_DATA["fixAutoTimer"] = dataObj.mandelbug.fixAutoTimer;
+          MBUG_DATA["fixPointsAmount"] = dataObj.mandelbug.fixPointsAmount;
+          MBUG_DATA["fixPointsAdd"] = dataObj.mandelbug.fixPointsAdd;
+          MBUG_DATA["fixPointsAutoAdd"] = dataObj.mandelbug.fixPointsAutoAdd;
+          MBUG_DATA["fixPointsReq"] = dataObj.mandelbug.fixPointsReq;
+        }
 
-          if(dataObj.schroedinbug) {
-            SBUG_DATA["amount"] = dataObj.schroedinbug.amount;
-            SBUG_DATA["activ"] = dataObj.schroedinbug.activ;
-            SBUG_DATA["autoAdd"] = dataObj.schroedinbug.autoAdd;
-            SBUG_DATA["autoTimer"] = dataObj.schroedinbug.autoTimer;
-            SBUG_DATA["fixAmount"] = dataObj.schroedinbug.fixAmount;
-            SBUG_DATA["fixAdd"] = dataObj.schroedinbug.fixAdd;
-            SBUG_DATA["fixReward"] = dataObj.schroedinbug.fixReward;
-            SBUG_DATA["fixAutoTimer"] = dataObj.schroedinbug.fixAutoTimer;
-            SBUG_DATA["fixPointsAmount"] = dataObj.schroedinbug.fixPointsAmount;
-            SBUG_DATA["fixPointsAdd"] = dataObj.schroedinbug.fixPointsAdd;
-            SBUG_DATA["fixPointsAutoAdd"] = dataObj.schroedinbug.fixPointsAutoAdd;
-            SBUG_DATA["fixPointsReq"] = dataObj.schroedinbug.fixPointsReq;
-          }
+        if(dataObj.schroedinbug) {
+          SBUG_DATA["amount"] = dataObj.schroedinbug.amount;
+          SBUG_DATA["activ"] = dataObj.schroedinbug.activ;
+          SBUG_DATA["autoAdd"] = dataObj.schroedinbug.autoAdd;
+          SBUG_DATA["autoTimer"] = dataObj.schroedinbug.autoTimer;
+          SBUG_DATA["fixAmount"] = dataObj.schroedinbug.fixAmount;
+          SBUG_DATA["fixAdd"] = dataObj.schroedinbug.fixAdd;
+          SBUG_DATA["fixReward"] = dataObj.schroedinbug.fixReward;
+          SBUG_DATA["fixAutoTimer"] = dataObj.schroedinbug.fixAutoTimer;
+          SBUG_DATA["fixPointsAmount"] = dataObj.schroedinbug.fixPointsAmount;
+          SBUG_DATA["fixPointsAdd"] = dataObj.schroedinbug.fixPointsAdd;
+          SBUG_DATA["fixPointsAutoAdd"] = dataObj.schroedinbug.fixPointsAutoAdd;
+          SBUG_DATA["fixPointsReq"] = dataObj.schroedinbug.fixPointsReq;
+        }
 
-        // }else {
-          USER_WORLD_POS = dataObj.userWPos;
-          OPTION_AUTO_SAVE_TIMER = dataObj.optASTimer;
-          OPTION_AUTO_SAVE_TOGGLE = dataObj.optASToggle;
-          HBUG_activ = dataObj.hbugactiv;
-          STORY_INTRO_DONE = dataObj.storyIntroD;
+      // }else {
+        USER_WORLD_POS = dataObj.userWPos;
+        OPTION_AUTO_SAVE_TIMER = dataObj.optASTimer;
+        OPTION_AUTO_SAVE_TOGGLE = dataObj.optASToggle;
+        HBUG_activ = dataObj.hbugactiv;
+        STORY_INTRO_DONE = dataObj.storyIntroD;
 
-          STATS_DATA["moneyTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["bbugTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["bbugFixTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["hbugTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["hugFixTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["mbugTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["mbugFixTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["sbugTotal"] = dataObj.statMoneyTotal;
-          STATS_DATA["sbugFixTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["moneyTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["bbugTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["bbugFixTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["hbugTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["hugFixTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["mbugTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["mbugFixTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["sbugTotal"] = dataObj.statMoneyTotal;
+        STATS_DATA["sbugFixTotal"] = dataObj.statMoneyTotal;
 
-          USER["money"] = dataObj.moneyA;
-          USER["level"] = dataObj.level;
-          USER["xp"] = dataObj.xp;
-          USER["companyName"] = dataObj.companyName;
-
-          init_bugs();
-          init_helpers();
-          refresh_all_screen_elements();
-        // }
-      // // }
+        USER["money"] = dataObj.moneyA;
+        USER["level"] = dataObj.level;
+        USER["xp"] = dataObj.xp;
+        USER["companyName"] = dataObj.companyName;
+      }else {
+        USER["id"] = dataObj.uid;
+        init_bugs();
+        init_helpers();
+        refresh_all_screen_elements();
+        save_game();
+        window.location.search += "?uid=" + dataObj.uid;
+      }
+      init_bugs();
+      init_helpers();
+      refresh_all_screen_elements();
     },
     error: function(a,b,c) {console.log(a + b + c);}
   });
@@ -312,7 +324,7 @@ function save_game() {
       uid: USER["id"],
       data: saveData
     },
-    success: function(msg) {alert(msg);},
+    success: function(msg) {console.log(msg);},
     error: function(a, b, c){
       alert("ERROR: Failed to save game")
       console.log(a);

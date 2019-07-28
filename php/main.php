@@ -1,21 +1,27 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$serverInfoPath = __DIR__ . "/../serverInfo.json";
+$saveGamePath = __DIR__ . "/../savegames/";
 
 if($_POST['task'] == "saveGame"){
-  saveGame($_POST['uid'], $_POST['data']);
+  save_game($_POST['uid'], $_POST['data']);
 }
 
 if($_POST['task'] == "loadGame"){
-  loadGame($_POST['uid']);
+  load_game($_POST['uid']);
 }
 
-function loadGame($uid) {
+function load_game($uid) {
   $data = 0;
   if($uid != 0) {
-    $dir = __DIR__ . "/../savegames/";
 
+    global $saveGamePath;
     $userHasSaveGame = 0;
 
-    $files = scandir($dir);
+    $files = scandir($saveGamePath);
     $filename = "";
     $regexp = '/\_'.$uid.'/';
 
@@ -27,27 +33,25 @@ function loadGame($uid) {
       }
     }
     if($userHasSaveGame) {
-      $file = fopen($dir.$filename, 'r');
+      $file = fopen($saveGamePath.$filename, 'r');
       $data = fread($file, 100000);
       fclose($file);
+      echo $data;
     }
+  }else {
+    echo create_new_game();
   }
-  echo $data;
+  
   return;
 }
 
-function saveGame($uid, $data) {
-  if($uid == 0) {
-    $uc = getUserCount();
-    $uid = $uc + 1;
-  }
-  $dir = __DIR__ . "/../savegames/";
-
+function save_game($uid, $data = "{}") {
+  global $saveGamePath;
   $userHasSaveGame = 0;
 
-  $files = scandir($dir);
+  $files = scandir($saveGamePath);
   $filename = "";
-  $regexp = '/\_'.$uid.'/';
+  $regexp = '/\_'.$uid.'\.js/';
 
   foreach ($files as $key => $value) {
     $id = substr($value, -4, 4);
@@ -58,24 +62,34 @@ function saveGame($uid, $data) {
     }
   }
   if($userHasSaveGame) {
-    $file = fopen($dir.$filename, 'w');
+    $file = fopen($saveGamePath.$filename, 'w');
     fwrite($file, $data);
     fclose($file);
   }else {
-    $filename = mktime()."_".$uid.".json";
-    $file = fopen($dir.$filename, 'w');
+    $filename = time()."_".$uid.".json";
+    $file = fopen($saveGamePath.$filename, 'w');
     fwrite($file, $data);
     fclose($file);
   }
-  echo "Saved!";
   return;
 }
 
-function getUserCount() {
-  $file = "../serverInfo.json";
-  $json = json_decode(file_get_contents($file),true);
+function create_new_game() {
+  $uid = increase_user_count();
+  save_game($uid);
+  return json_encode(array("newGameCreated" => true,"uid" => $uid));
+}
+
+function get_user_count() {
+  global $serverInfoPath;
+  $json = json_decode(file_get_contents($serverInfoPath),true);
+  return $json['userCount'];
+}
+function increase_user_count($i = 1) {
+  global $serverInfoPath;
+  $json = json_decode(file_get_contents($serverInfoPath),true);
   $uCount = $json['userCount'];
-  $json['userCount'] = $json['userCount'] + 1;
-  file_put_contents($file, json_encode($json));
-  return $uCount;
+  $json['userCount'] = $json['userCount'] + $i;
+  file_put_contents($serverInfoPath, json_encode($json));
+  return $uCount + $i;
 }
