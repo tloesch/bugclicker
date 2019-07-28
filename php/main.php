@@ -41,7 +41,7 @@ function saveGame($uid, $data) {
     $uc = getUserCount();
     $uid = $uc + 1;
   }
-  $dir = "../../savegames/";
+  $dir = "../savegames/";
 
   $userHasSaveGame = 0;
 

@@ -25,10 +25,10 @@ function helper(type, amount, timer, pointsAdd, bugTarget, cost, level, upgradeC
 }
 
 helper.prototype.buy = function() {
-  if(MONEY_AMOUNT >= this.cost) {
+  if(USER["money"] >= this.cost) {
     this.amount += 1;
-    MONEY_AMOUNT -= this.cost;
-    update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+    USER["money"] -= this.cost;
+    update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
     console.log(this.type + ": " + this.amount);
   }
 }
@@ -36,19 +36,19 @@ helper.prototype.buy = function() {
 helper.prototype.sell = function() {
   if(this.amount > 0) {
     this.amount -= 1;
-    MONEY_AMOUNT += this.cost * 0.8;
-    update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+    USER["money"] += this.cost * 0.8;
+    update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
   }
 }
 
 // TODO: UPDATE TIMER
 helper.prototype.upgrade = function() {
-  if(MONEY_AMOUNT >= this.upgradeCost) {
+  if(USER["money"] >= this.upgradeCost) {
       this.level += 1;
-      MONEY_AMOUNT -= this.upgradeCost;
+      USER["money"] -= this.upgradeCost;
       this.upgradeCost += this.upgradeCost * 0.5;
       console.log("UPGRADE COST: " + this.upgradeCost);
-      update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+      update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
   }
 
   // console.log("HELPER UPGRADET: "+ this.level);

@@ -31,12 +31,12 @@ function start_timers() {
   MONEY FUNCTIONS
   ###############*/
 function add_money(reward) {
-  MONEY_AMOUNT += reward;
-  update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+  USER["money"] += reward;
+  update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
 }
 
 function refresh_money() {
-  update_counter(SCREEN_MONEY_COUNTER, MONEY_AMOUNT + "$");
+  update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
 }
 
 /*##############
@@ -155,10 +155,6 @@ function init_navigation() {
 
 }
 
-/*##############
-  USER FUNCTIONS
-  ##############*/
-
 /*###############
   STORY FUNCTIONS
   ###############*/
@@ -173,9 +169,32 @@ function story_intro_complete() {
   SAVE GAME FUNCIONS
   ##################*/
 
+// Returns specific url parameter or full set of parameters
+function get_params(req_param = "") {
+  var params = {};
+  var parser = document.createElement('a');
+  parser.href = window.location.href;
+  var query = parser.search.substring(1);
+  var vars = query.split('&');
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=');
+    params[pair[0]] = decodeURIComponent(pair[1]);
+  }
+  if(req_param == "") {
+    return params;
+  }
+  if(typeof params[req_param] === 'undefined'){
+    return "Required parameter is undefined";
+  }else {
+    return params[req_param];
+  }
+  
+}
+
+// ADD CUSTOM PW TO LOAD SAVEGAME
 function load_save_game() {
   var dataJSON;
-  var userId = USER_ID;
+  var userId = get_params("uid");
   $.ajax({
     url: 'php/main.php',
     type: 'POST',
@@ -256,7 +275,6 @@ function load_save_game() {
           OPTION_AUTO_SAVE_TIMER = dataObj.optASTimer;
           OPTION_AUTO_SAVE_TOGGLE = dataObj.optASToggle;
           HBUG_activ = dataObj.hbugactiv;
-          MONEY_AMOUNT = dataObj.moneyA;
           STORY_INTRO_DONE = dataObj.storyIntroD;
 
           STATS_DATA["moneyTotal"] = dataObj.statMoneyTotal;
@@ -268,6 +286,11 @@ function load_save_game() {
           STATS_DATA["mbugFixTotal"] = dataObj.statMoneyTotal;
           STATS_DATA["sbugTotal"] = dataObj.statMoneyTotal;
           STATS_DATA["sbugFixTotal"] = dataObj.statMoneyTotal;
+
+          USER["money"] = dataObj.moneyA;
+          USER["level"] = dataObj.level;
+          USER["xp"] = dataObj.xp;
+          USER["companyName"] = dataObj.companyName;
 
           init_bugs();
           init_helpers();
@@ -282,16 +305,19 @@ function load_save_game() {
 function save_game() {
   var saveData = get_save_data();
   $.ajax({
-    url: 'assets/php/main.php',
+    url: 'php/main.php',
     type: 'POST',
     data: {
       task: "saveGame",
-      uid: USER_ID,
+      uid: USER["id"],
       data: saveData
     },
     success: function(msg) {alert(msg);},
     error: function(a, b, c){
-      console.log(a + b + c);
+      alert("ERROR: Failed to save game")
+      console.log(a);
+      console.log(b);
+      console.log(c);
     }
   });
   return;
@@ -299,12 +325,14 @@ function save_game() {
 
 function get_save_data() {
   var saveDataObj = {
-    "userId":USER_ID,
     "userWPos":USER_WORLD_POS,
     "optASTimer":OPTION_AUTO_SAVE_TIMER,
     "optASToggle":OPTION_AUTO_SAVE_TOGGLE,
-    "moneyA":MONEY_AMOUNT,
-    "storyIntroD":STORY_INTRO_DONE
+    "moneyA": USER["money"],
+    "storyIntroD":STORY_INTRO_DONE,
+    "xp": USER["xp"],
+    "level": USER["level"],
+    "companyName": USER["companyName"]
   };
   var bbugSave = bbug.get_save_data_obj();
   var hbugSave = hbug.get_save_data_obj();

@@ -1,1 +1,15 @@
 // WORKPLACE
+#screen-home {
+	&>.flex{
+		
+	}
+	#click-panel {
+		width: 350px;
+	}
+	#workplace-panel {
+		flex-grow: 2;
+	}
+	#company-panel {
+		width: 350px;
+	}
+}
