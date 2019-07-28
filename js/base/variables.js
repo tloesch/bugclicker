@@ -3,8 +3,28 @@ var OPTION_AUTO_SAVE_TOGGLE = 1; // DEFAULT 1 (TURNED ON)
 var OPTION_AUTO_SAVE_TIMER = 6000000; // DEFAULT 600000 (10 minutes)
 
 // USER
-var USER_ID = 1337; // DEFAULT 0 (NEW PLAYER)
 var USER_WORLD_POS = 0; // DEFAULT 0 (START SCREEN)
+
+var USER = {
+  "id": 0,
+  "money": 0,
+  "level": 0,
+  "xp": 0,
+  "companyName": ""
+}
+
+const LEVEL_TITLES = [
+    [0,4,"Hobbyist"],
+    [5,9,"Intern"],
+    [10,14,"Junior Dev"],
+    [15,20,"Developer"],
+  ];
+
+const LEVEL_REQUIREMENT = [
+  10, 25, 50, 80, 125, 175, 250, 300, 425, 550,
+  800, 1000, 1500, 2000, 3000, 4000, 5000, 6500, 8000, 10000
+]
+
 
 // BUG
   // BOHRBUG
@@ -126,9 +146,6 @@ var SKHELPER_DATA = {
   "level": 1,
   "upgradeCost": 5
 }
-
-// MONEY
-var MONEY_AMOUNT = 0; // DEFAULT 0 (YOU NEED TO EARN IT FIRST IDIOT!)
 
 // STORY
 var STORY_INTRO_DONE = 0 // DEFAULT 0 FOR FIRST START

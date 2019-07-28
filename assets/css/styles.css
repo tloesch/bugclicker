@@ -193,10 +193,10 @@ section {
 .ppc-percents {
   position: absolute;
   border-radius: 50%;
-  left: calc(50% - 43.4782608696px/2);
-  top: calc(50% - 43.4782608696px/2);
-  width: 43.4782608696px;
-  height: 43.4782608696px;
+  left: calc(50% - 43.47826px/2);
+  top: calc(50% - 43.47826px/2);
+  width: 43.47826px;
+  height: 43.47826px;
   background: #fff;
   text-align: center;
   border: none; }
@@ -209,6 +209,13 @@ section {
 .pcc-percents-wrapper {
   display: table-cell;
   vertical-align: middle; }
+
+#screen-home #click-panel {
+  width: 350px; }
+#screen-home #workplace-panel {
+  flex-grow: 2; }
+#screen-home #company-panel {
+  width: 350px; }
 
 #screen-internet .webpage {
   width: 100%;

@@ -149,6 +149,7 @@ bug.prototype.fix = function(fixPoints) {
     this.fixPointsAmount = rest;
 
     add_money(this.fixReward * fixAdd);
+    update_user_level(this.fixReward * fixAdd);
     this.refresh();
   }
 }

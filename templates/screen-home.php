@@ -3,7 +3,7 @@
   <div class="flex">
 
     <div id="click-panel">
-      <div id="money-counter" class="money-counter">0$</div>
+      
 
       <div id="bohrbug" class="bug-wrap align-center active wrap">
         <div class="bug ascii"> _ /-\ _<br/>´_| B |_`<br/>´  \_/  `</div>
@@ -40,6 +40,7 @@
         </div>
         <div id="sbug-fix-progress" class="ascii clickGroup progress">╟····················╢</div>
       </div>
+
     </div>
 
     <div id="workplace-panel" class="ascii flex wrap">
@@ -47,7 +48,14 @@
     </div>
 
     <div id="company-panel">
-      COMPANY STATS
+      <div class="inner">
+        <input id="company-name" type="text" value="COMPANY_NAME"></input>
+        <div id="user_level">
+          <pre id="lvl"></pre>
+        </div>
+        <div id="money-counter" class="money-counter">0$</div>
+
+      </div>
     </div>
 
   </div>
