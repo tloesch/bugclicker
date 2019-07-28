@@ -196,7 +196,7 @@ function load_save_game() {
   var dataJSON;
   var userId = get_params("uid");
   $.ajax({
-    url: 'php/main.php',
+    url: '/php/main.php',
     type: 'POST',
     async: false,
     data: {
@@ -305,7 +305,7 @@ function load_save_game() {
 function save_game() {
   var saveData = get_save_data();
   $.ajax({
-    url: 'php/main.php',
+    url: '/php/main.php',
     type: 'POST',
     data: {
       task: "saveGame",

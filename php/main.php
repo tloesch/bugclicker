@@ -11,7 +11,7 @@ if($_POST['task'] == "loadGame"){
 function loadGame($uid) {
   $data = 0;
   if($uid != 0) {
-    $dir = "../savegames/";
+    $dir = __DIR__ . "/../savegames/";
 
     $userHasSaveGame = 0;
 
@@ -41,7 +41,7 @@ function saveGame($uid, $data) {
     $uc = getUserCount();
     $uid = $uc + 1;
   }
-  $dir = "../savegames/";
+  $dir = __DIR__ . "/../savegames/";
 
   $userHasSaveGame = 0;
 
