@@ -4,6 +4,8 @@
 
 //TODO: CHECK IF element IS NodeList OR Array AND LOOP IF MORE THAN ONE element IS IN LIST
 function update_counter(element, value) {
+
+  console.log(hbug.screenWrap);
   element.innerHTML = value;
 }
 
@@ -63,7 +65,7 @@ function update_user_level(xp_increase = 0) {
   while(i){
    if(xp >= requirement[lvl]) {
       lvl++;
-      USER["level"] = lvl;
+      level_up();
     }else {
       i = false;
     }
@@ -108,6 +110,12 @@ function update_user_level(xp_increase = 0) {
   })
 
   lvl_elem.innerHTML = top_part + "\n" + progress_part + progress_end + "\n" + bottom_part + "\n " + level_title;
+}
+
+function level_up(increaser = 1) {
+  USER["level"] += increaser;
+  check_bug_requirements();
+  return;
 }
 
 function update_comp_content() {

@@ -1,3 +1,5 @@
+// TODO: activ -> active
+
 // Global Bug definition
 var bbug, hbug, mbug, sbug;
 
@@ -38,7 +40,7 @@ function init_bugs() {
     HBUG_DATA["fixPointsAdd"],
     HBUG_DATA["fixPointsAutoAdd"],
     HBUG_DATA["fixPointsReq"],
-    BBUG_DATA["screenWrap"],
+    HBUG_DATA["screenWrap"],
     HBUG_DATA["screenCounter"],
     HBUG_DATA["screenFixCounter"],
     HBUG_DATA["screenFixProgress"],
@@ -59,7 +61,7 @@ function init_bugs() {
     MBUG_DATA["fixPointsAdd"],
     MBUG_DATA["fixPointsAutoAdd"],
     MBUG_DATA["fixPointsReq"],
-    BBUG_DATA["screenWrap"],
+    MBUG_DATA["screenWrap"],
     MBUG_DATA["screenCounter"],
     MBUG_DATA["screenFixCounter"],
     MBUG_DATA["screenFixProgress"],
@@ -80,7 +82,7 @@ function init_bugs() {
     SBUG_DATA["fixPointsAdd"],
     SBUG_DATA["fixPointsAutoAdd"],
     SBUG_DATA["fixPointsReq"],
-    BBUG_DATA["screenWrap"],
+    SBUG_DATA["screenWrap"],
     SBUG_DATA["screenCounter"],
     SBUG_DATA["screenFixCounter"],
     SBUG_DATA["screenFixProgress"],
@@ -158,9 +160,8 @@ bug.prototype.fix = function(fixPoints) {
 bug.prototype.activate = function() {
   var bug = this;
   this.activ = 1;
-
-  bug.screenWrap.classList.add("activ");
-
+  bug.screenWrap.classList.add("active");
+  bug.screenWrap.classList.add("wrap");
   setInterval(function() {bug.add();}, this.autoTimer);
 }
 
@@ -202,12 +203,15 @@ bug.prototype.get_important_data = function() {
 }
 
 // timed function to activate bugs
-function activateBug() {
-  var bbugData = bbug.get_important_data();
-  var hbugData = hbug.get_important_data();
-  var mbugData = mbug.get_important_data();
-  var sbugData = sbug.get_important_data();
-  if(bbugData["amount"] >= 50 && hbugData["activ"] == 0) {
+function check_bug_requirements() {
+  if(USER["level"] == 1 && hbug.active == 0) {
     hbug.activate();
   }
+  if(USER["level"] == 5 && mbug.active == 0) {
+    mbug.activate();
+  }
+  if(USER["level"] == 10 && sbug.active == 0) {
+    sbug.activate();
+  }
+  return;
 }

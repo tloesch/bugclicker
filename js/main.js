@@ -21,7 +21,6 @@ function start_timers() {
   setInterval(function() {bbug.add();}, bbug.autoTimer);
   if(hbug.activ == 1){hbug.activate();}
   setInterval(function() {skHelper.work();}, skHelper.timer);
-  setInterval(function() {activateBug();}, 1000);
   if(OPTION_AUTO_SAVE_TOGGLE) {
     setInterval(function(){save_game();}, OPTION_AUTO_SAVE_TIMER);
   }
