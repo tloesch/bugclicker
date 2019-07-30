@@ -4,8 +4,6 @@
 
 //TODO: CHECK IF element IS NodeList OR Array AND LOOP IF MORE THAN ONE element IS IN LIST
 function update_counter(element, value) {
-
-  console.log(hbug.screenWrap);
   element.innerHTML = value;
 }
 
@@ -134,6 +132,22 @@ function update_comp_content() {
   }
 }
 
+function init_company_name() {
+  var companyName = USER["companyName"];
+  if(USER["companyName"] == "") {
+    var randomInt = Math.floor(Math.random() * (FILLER_COMPANY_NAMES.length - 0)) + 0;
+    companyName = FILLER_COMPANY_NAMES[randomInt];
+  }
+  document.getElementById("company-name").value = companyName;
+  document.getElementById("company-name").addEventListener ("change", function () {
+    USER["companyName"] = this.value;
+    if(this.value == "") {
+      var randomInt = Math.floor(Math.random() * (FILLER_COMPANY_NAMES.length - 0)) + 0;
+      document.getElementById("company-name").value = FILLER_COMPANY_NAMES[randomInt];
+    }
+  });
+}
+
 function update_stat_list() {
 
 }
@@ -141,6 +155,7 @@ function update_stat_list() {
 function refresh_all_screen_elements() {
   refresh_money();
   update_user_level();
+  init_company_name();
   // TODO: Auto loop through all bugs
   bbug.refresh();
   hbug.refresh();

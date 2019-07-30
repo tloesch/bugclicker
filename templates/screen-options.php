@@ -15,4 +15,9 @@
     <p class="" stat="mbugFixTotal"></p>
   </div>
   <button id="save-game" class="nav-elem" onclick="save_game()">SAVE</button>
+  <p>Auto save is set to 10min.</p>
+  <div>
+    <p>Set password on your gamefile</p>
+    <input id="user-psw" type="password" value=""/>
+  </div>
 </section>

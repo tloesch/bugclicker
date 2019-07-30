@@ -1,16 +1,29 @@
-function search(from="",to="") {
-  var searchField = document.getElementById('wp-searchField');
-  var searchPage = document.getElementById('wp-search');
-  if(to != "") {
-    document.getElementById(to).classList.add('active');
-    document.getElementById(from).classList.remove('active');
-  }else {
-    if(searchField.value == "work") {
-      document.getElementById('wp-workers').classList.add('active');
-      searchPage.classList.remove('active');
-    }else if (searchField.value == "intranet") {
-      document.getElementById('wp-intranet').classList.add('active');
-      searchPage.classList.remove('active');
+var webpage_doms = [
+  document.getElementById('wp-search'),
+  document.getElementById('wp-workers'),
+  document.getElementById('wp-intranet'),
+  document.getElementById('wp-company') 
+];
+
+function search(target="") {
+  var searchValue = document.getElementById('wp-searchField').value;
+  if(target == "") {
+    if(searchValue == "work") {
+      switch_webpage(document.getElementById("wp-workers"));
+      
+    }else if (searchValue == "intranet") {
+      switch_webpage(document.getElementById("wp-intranet"));
     }
+  }else {
+    switch_webpage(document.getElementById(target));
   }
+}
+
+function switch_webpage(target) {
+  webpage_doms.forEach(function(page) {
+    if(page.classList.contains('active')) {
+      page.classList.remove('active');
+    }
+  });
+  target.classList.add('active');
 }

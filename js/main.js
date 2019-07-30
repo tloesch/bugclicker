@@ -19,11 +19,12 @@ function init() {
 
 function start_timers() {
   setInterval(function() {bbug.add();}, bbug.autoTimer);
+
   if(hbug.activ == 1){hbug.activate();}
+
   setInterval(function() {skHelper.work();}, skHelper.timer);
-  if(OPTION_AUTO_SAVE_TOGGLE) {
-    setInterval(function(){save_game();}, OPTION_AUTO_SAVE_TIMER);
-  }
+
+  setInterval(function(){auto_save();}, OPTION_AUTO_SAVE_TIMER);
 }
 
 /*###############
@@ -207,7 +208,6 @@ function load_save_game() {
       uid: USER["id"],
     },
     success: function(data) {
-      console.log(data);
       var dataObj = JSON.parse(data);
       if(typeof dataObj.newGameCreated === "undefined") {
 
@@ -341,6 +341,7 @@ function get_save_data() {
     "optASToggle":OPTION_AUTO_SAVE_TOGGLE,
     "moneyA": USER["money"],
     "storyIntroD":STORY_INTRO_DONE,
+    "psw":USER["psw"],
     "xp": USER["xp"],
     "level": USER["level"],
     "companyName": USER["companyName"]
@@ -359,6 +360,10 @@ function validateSaveGame() {
   return;
 }
 
-function autoSave() {
+function auto_save() {
+  console.log("autoSave");
+  if(OPTION_AUTO_SAVE_TOGGLE == 1) {
+    save_game();
+  }
   return;
 }

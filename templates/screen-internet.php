@@ -10,10 +10,10 @@
   </div>
   <div id="wp-workers" class="webpage">
     <div class="wp-header flex justify-center">
-      <p class="wp-headline">GET NEW EMPOYES</p>
+      <p class="wp-headline">GET NEW EMPLOYES</p>
     </div>
     <div class="wp-content flex wrap justify-between">
-      <button onclick="search('wp-workers', 'wp-search')">Back to Search</button>
+      <button onclick="search('wp-search')">Back to Search</button>
       <div id="buy-worker-sk" class="worker-wrap">
         <div class="emp-type">Script Kiddy</div>
         <div class="emp-stats">
@@ -45,6 +45,7 @@
       <p class="wp-headline">VERWALTE YOUR EMPLOYES</p>
     </div>
     <div class="wp-content flex wrap justify-between">
+      <button onclick="search('wp-search')">Back to Search</button>
       <div class="worker-wrap">
         <div class="emp-type">Script Kiddy</div>
         <div class="emp-buy"><button onclick="skHelper.upgrade()">UPGRADE SCRIPT KIDDI</button></div>
@@ -59,4 +60,7 @@
       </div>
     </div>
   </div>
-  </section>
+  <div id="wp-company" class="webpage">
+
+  </div>
+</section>

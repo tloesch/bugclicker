@@ -13,6 +13,7 @@ var USER = {
   "companyName": ""
 }
 
+const FILLER_COMPANY_NAMES = ["Awesome Dev", "Coolio Mc.Nicenstein", "Devolution", "console.log", "Random Company Name", "Cazy Cat Container", "Mr D.", "ASDFGHJKL"];
 const LEVEL_TITLES = [
     [0,4,"Hobbyist"],
     [5,9,"Intern"],
