@@ -9,14 +9,14 @@
 <body>
   <div class="nav-wrap">
     <div id="navigation" class="flex justify-center wrap align-center<">
-      <div class="ascii">#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#</div>
+      <div class="ascii">#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#</div>
       <div class="ascii">|<br/>|<br/>|<br/></div>
       <div id="nav-home" class="nav-elem nav_active"><p>Workplace</p></div>
       <div id="nav-city" class="nav-elem"><p>City</p></div>
       <div id="nav-internet" class="nav-elem"><p>Internet</p></div>
       <div id="nav-options" class="nav-elem"><p>Options</p></div>
       <div class="ascii">|<br/>|<br/>|<br/></div>
-      <div class="ascii">#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#</div>
+      <div class="ascii">#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#</div>
     </div>
   </div>
 
@@ -28,11 +28,12 @@
 
   <?php include("templates/screen-options.php"); ?>
 
+<?php /* ?>
   <div id="debug-panel">
     <h2>DEBUG PANEL</h2>
     <button onclick="story_intro_complete()">STORY_INTRO_DONE = 1</button>
     <input type=""/>
-  </div>
+  </div><?php */ ?>
 
   </div>
 

@@ -1,3 +1,4 @@
+<?php ?>
 <section id="screen-options" class="screen-section options">
   <!-- TODO: MAKE IT GOOD -->
   <div id="achievement-list" class="flex">

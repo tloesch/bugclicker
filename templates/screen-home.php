@@ -1,3 +1,4 @@
+<?php ?>
 <!-- SCREEN SECTION HOME -->
 <section id="screen-home" class="screen-section home full wrap active">
   <div class="flex">
@@ -44,7 +45,11 @@
     </div>
 
     <div id="workplace-panel" class="ascii flex wrap">
-      WORKPLACE ASCII
+      <p>
+        Welcome to Bugclicker v0.5 alpha.<br/>
+        In this version of the Game you will only find the very basics of the game.<br/>
+        Go to Github to view what will be added in the future: <a href="https://github.com/MORHERO/bugclicker" target="_blank" rel="nofollow">Github Repository</a>
+      </p>
     </div>
 
     <div id="company-panel">

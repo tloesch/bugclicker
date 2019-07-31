@@ -1,3 +1,4 @@
+<?php ?>
 <section id="screen-city" class="screen-section city">
   <!-- <div id="money-counter" class="money-counter">0$</div> -->
   <div id="city-main" class="city-loc active">
@@ -11,6 +12,9 @@ xxxxxxxxxxxxxxxx<span id="trigger-provider" class="ascii-trigger">[PROVIDER]</sp
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<p>
+  The city has no functionality at the moment. It will be added with v0.6 and v0.7.
+</p>
       </div>
     </div>
   </div>
