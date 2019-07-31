@@ -1,0 +1,6 @@
+RedirectMatch 403 ^/assets/.?$
+RedirectMatch 403 ^/js/.?$
+RedirectMatch 403 ^/php/.?$
+RedirectMatch 403 ^/prototypes/.?$
+RedirectMatch 403 ^/savegames/.?$
+RedirectMatch 403 ^/templates/.?$
