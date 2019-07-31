@@ -8,6 +8,11 @@ $(document).ready(function(){
 function init() {
   set_screen_variables();
   load_save_game();
+}
+function game_loaded() {
+  init_bugs();
+  init_helpers();
+  refresh_all_screen_elements();
   start_timers();
   draw_world();
   init_navigation();
@@ -20,7 +25,7 @@ function init() {
 function start_timers() {
   setInterval(function() {bbug.add();}, bbug.autoTimer);
 
-  if(hbug.activ == 1){hbug.activate();}
+  if(hbug.active == 1){hbug.activate();}
 
   setInterval(function() {skHelper.work();}, skHelper.timer);
 
@@ -198,11 +203,10 @@ function load_save_game() {
   }
 
   USER["id"] = userId;
-
   $.ajax({
     url: '/php/main.php',
     type: 'POST',
-    async: false,
+    async: true,
     data: {
       task: "loadGame",
       uid: USER["id"],
@@ -218,7 +222,7 @@ function load_save_game() {
         // IDEA: create call to get all instanted bugs and retrieve there type. Loop through that types
         if(dataObj.bohrbug) {
           BBUG_DATA["amount"] = dataObj.bohrbug.amount;
-          BBUG_DATA["activ"] = dataObj.bohrbug.activ;
+          BBUG_DATA["active"] = dataObj.bohrbug.active;
           BBUG_DATA["autoAdd"] = dataObj.bohrbug.autoAdd;
           BBUG_DATA["autoTimer"] = dataObj.bohrbug.autoTimer;
           BBUG_DATA["fixAmount"] = dataObj.bohrbug.fixAmount;
@@ -233,7 +237,7 @@ function load_save_game() {
 
         if(dataObj.heisenbug) {
           HBUG_DATA["amount"] = dataObj.heisenbug.amount;
-          HBUG_DATA["activ"] = dataObj.heisenbug.activ;
+          HBUG_DATA["active"] = dataObj.heisenbug.active;
           HBUG_DATA["autoAdd"] = dataObj.heisenbug.autoAdd;
           HBUG_DATA["autoTimer"] = dataObj.heisenbug.autoTimer;
           HBUG_DATA["fixAmount"] = dataObj.heisenbug.fixAmount;
@@ -248,7 +252,7 @@ function load_save_game() {
 
         if(dataObj.mandelbug) {
           MBUG_DATA["amount"] = dataObj.mandelbug.amount;
-          MBUG_DATA["activ"] = dataObj.mandelbug.activ;
+          MBUG_DATA["active"] = dataObj.mandelbug.active;
           MBUG_DATA["autoAdd"] = dataObj.mandelbug.autoAdd;
           MBUG_DATA["autoTimer"] = dataObj.mandelbug.autoTimer;
           MBUG_DATA["fixAmount"] = dataObj.mandelbug.fixAmount;
@@ -263,7 +267,7 @@ function load_save_game() {
 
         if(dataObj.schroedinbug) {
           SBUG_DATA["amount"] = dataObj.schroedinbug.amount;
-          SBUG_DATA["activ"] = dataObj.schroedinbug.activ;
+          SBUG_DATA["active"] = dataObj.schroedinbug.active;
           SBUG_DATA["autoAdd"] = dataObj.schroedinbug.autoAdd;
           SBUG_DATA["autoTimer"] = dataObj.schroedinbug.autoTimer;
           SBUG_DATA["fixAmount"] = dataObj.schroedinbug.fixAmount;
@@ -280,7 +284,7 @@ function load_save_game() {
         USER_WORLD_POS = dataObj.userWPos;
         OPTION_AUTO_SAVE_TIMER = dataObj.optASTimer;
         OPTION_AUTO_SAVE_TOGGLE = dataObj.optASToggle;
-        HBUG_activ = dataObj.hbugactiv;
+        HBUG_active = dataObj.hbugactive;
         STORY_INTRO_DONE = dataObj.storyIntroD;
 
         STATS_DATA["moneyTotal"] = dataObj.statMoneyTotal;
@@ -305,9 +309,7 @@ function load_save_game() {
         save_game();
         window.location.search += "?uid=" + dataObj.uid;
       }
-      init_bugs();
-      init_helpers();
-      refresh_all_screen_elements();
+      game_loaded();
     },
     error: function(a,b,c) {console.log(a + b + c);}
   });
@@ -341,7 +343,6 @@ function get_save_data() {
     "optASToggle":OPTION_AUTO_SAVE_TOGGLE,
     "moneyA": USER["money"],
     "storyIntroD":STORY_INTRO_DONE,
-    "psw":USER["psw"],
     "xp": USER["xp"],
     "level": USER["level"],
     "companyName": USER["companyName"]

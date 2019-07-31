@@ -31,10 +31,10 @@ const LEVEL_REQUIREMENT = [
   // BOHRBUG
 var BBUG_DATA = {
   "name": "bohrbug",
-  "activ": 1,
+  "active": 1,
   "amount": 0,
   "autoAdd": 1,
-  "autoTimer": 5000,
+  "autoTimer": 2000,
   "fixAmount": 0,
   "fixAdd": 1,
   "fixReward": 1,
@@ -56,10 +56,10 @@ var BBUG_DATA = {
   // HEISENBUG
 var HBUG_DATA = {
   "name": "heisenbug",
-  "activ": 0,
+  "active": 0,
   "amount": 0,
   "autoAdd": 1,
-  "autoTimer": 5000,
+  "autoTimer": 4000,
   "fixAmount": 0,
   "fixAdd": 1,
   "fixReward": 2,
@@ -81,10 +81,10 @@ var HBUG_DATA = {
   // MANDELBUG
 var MBUG_DATA = {
   "name": "heisenbug",
-  "activ": 0,
+  "active": 0,
   "amount": 0,
   "autoAdd": 1,
-  "autoTimer": 5000,
+  "autoTimer": 6000,
   "fixAmount": 0,
   "fixAdd": 1,
   "fixReward": 4,
@@ -106,13 +106,13 @@ var MBUG_DATA = {
   // SCHROEDINBUG
 var SBUG_DATA = {
   "name": "heisenbug",
-  "activ": 0,
+  "active": 0,
   "amount": 0,
   "autoAdd": 1,
-  "autoTimer": 5000,
+  "autoTimer": 8000,
   "fixAmount": 0,
   "fixAdd": 1,
-  "fixReward": 4,
+  "fixReward": 6,
   "fixAutoTimer": 1000,
   "fixPointsAmount": 0,
   "fixPointsAdd": 1,
