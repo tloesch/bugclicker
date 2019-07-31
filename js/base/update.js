@@ -46,22 +46,29 @@ function update_user_level(xp_increase = 0) {
 
   const requirement = LEVEL_REQUIREMENT;
   var lvl = USER["level"];
-  if(lvl > 0) {
-    var xp = USER["xp"] - requirement[lvl - 1];
-  }else {
-    var xp = USER["xp"];
+
+  var progress_reduce = 0;
+  var count = 0;
+  
+  while(count < lvl) {
+    progress_reduce += requirement[count];
+    count++;
   }
-  
-  
+
+  var reduced_xp = USER["xp"] - progress_reduce;
 
   var lvl_length = lvl.toString().length;
   var lvl_border_part = "═".repeat(lvl_length);
   var top_part = "╔════════════════════╦═" + lvl_border_part + "═╗";
   var bottom_part = "╚════════════════════╩═" + lvl_border_part + "═╝";
 
+  var progress = requirement[lvl] - (requirement[lvl] - reduced_xp);
+
+  var lvl_before = lvl;
   var i = true;
   while(i){
-   if(xp >= requirement[lvl]) {
+   if(progress >= requirement[lvl]) {
+
       lvl++;
       level_up();
     }else {
@@ -69,7 +76,20 @@ function update_user_level(xp_increase = 0) {
     }
   }
 
-  var progress = requirement[lvl] - (requirement[lvl] - xp);
+  if(lvl_before != lvl) {
+    var count = 0;
+  
+    while(count < lvl) {
+      progress_reduce += requirement[count];
+      count++;
+    }
+    reduced_xp = USER["xp"] - progress_reduce;
+    progress = requirement[lvl] - (requirement[lvl] - reduced_xp);
+  }
+  // TODO: Make a right fix this is bullshit!
+  if(progress < 0) {
+    progress = 0;
+  }
 
   // CONVERT PROGRESS TO ASCII
   // size of full sections
@@ -92,7 +112,6 @@ function update_user_level(xp_increase = 0) {
     }
     var progress_filler = " ".repeat((20 - full_sections_count - 1));
   }
-
   var progress_part = "╟" + progress_parts[progress_parts.length - 1].repeat(full_sections_count) + progress_parts[full_part_count];
   var progress_end = progress_filler + "╢ " + lvl + " ║";
 

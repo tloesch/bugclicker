@@ -7,7 +7,7 @@ var bbug, hbug, mbug, sbug;
 function init_bugs() {
   bbug = new bug(
     BBUG_DATA["name"],
-    BBUG_DATA["activ"],
+    BBUG_DATA["active"],
     BBUG_DATA["amount"],
     BBUG_DATA["autoAdd"],
     BBUG_DATA["autoTimer"],
@@ -28,7 +28,7 @@ function init_bugs() {
 
   hbug = new bug(
     HBUG_DATA["name"],
-    HBUG_DATA["activ"],
+    HBUG_DATA["active"],
     HBUG_DATA["amount"],
     HBUG_DATA["autoAdd"],
     HBUG_DATA["autoTimer"],
@@ -49,7 +49,7 @@ function init_bugs() {
 
   mbug = new bug(
     MBUG_DATA["name"],
-    MBUG_DATA["activ"],
+    MBUG_DATA["active"],
     MBUG_DATA["amount"],
     MBUG_DATA["autoAdd"],
     MBUG_DATA["autoTimer"],
@@ -70,7 +70,7 @@ function init_bugs() {
 
   sbug = new bug(
     SBUG_DATA["name"],
-    SBUG_DATA["activ"],
+    SBUG_DATA["active"],
     SBUG_DATA["amount"],
     SBUG_DATA["autoAdd"],
     SBUG_DATA["autoTimer"],
@@ -92,9 +92,9 @@ function init_bugs() {
 }
 
 // Prototype bug
-function bug (type, activ, amount, autoAdd, autoTimer, fixAmount, fixAdd, fixReward, fixAutoTimer, fixPointsAmount, fixPointsAdd, fixPointsAutoAdd, fixPointsReq, screenWrap, screenCounter, screenFixCounter, screenFixProgress, statBugs, statFixes) {
+function bug (type, active, amount, autoAdd, autoTimer, fixAmount, fixAdd, fixReward, fixAutoTimer, fixPointsAmount, fixPointsAdd, fixPointsAutoAdd, fixPointsReq, screenWrap, screenCounter, screenFixCounter, screenFixProgress, statBugs, statFixes) {
   this.type = type;
-  this.activ = activ,
+  this.active = active,
   this.amount = amount;
   this.autoAdd = autoAdd;
   this.autoTimer = autoTimer;
@@ -159,7 +159,7 @@ bug.prototype.fix = function(fixPoints) {
 // activate bugs
 bug.prototype.activate = function() {
   var bug = this;
-  this.activ = 1;
+  this.active = 1;
   bug.screenWrap.classList.add("active");
   bug.screenWrap.classList.add("wrap");
   setInterval(function() {bug.add();}, this.autoTimer);
@@ -176,7 +176,7 @@ bug.prototype.get_save_data_obj = function() {
   var dataObj = {
     [this.type]: {
       ['amount']:this.amount,
-      ['activ']:this.activ,
+      ['active']:this.active,
       ['autoAdd']:this.autoAdd,
       ['autoTimer']:this.autoTimer,
       ['fixAmount']:this.fixAmount,
@@ -189,13 +189,14 @@ bug.prototype.get_save_data_obj = function() {
       ['fixPointsReq']:this.fixPointsReq,
     }
   }
+  console.log(dataObj)
   return dataObj;
 }
 
 // generate importend data object
 bug.prototype.get_important_data = function() {
   var dataObj = {
-    ["activ"]:this.activ,
+    ["active"]:this.active,
     ["amount"]:this.amount,
     ["fixAmount"]:this.fixAmount
   }

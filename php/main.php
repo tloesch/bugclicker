@@ -15,24 +15,15 @@ if($_POST['task'] == "loadGame"){
 }
 
 function load_game($uid) {
-  $data = 0;
+  $data = "";
   if($uid != 0) {
 
     global $saveGamePath;
-    $userHasSaveGame = 0;
-
     $files = scandir($saveGamePath);
-    $filename = "";
-    $regexp = '/\_'.$uid.'/';
+    $filename = $uid . '.json';
 
-    foreach ($files as $key => $value) {
-      $id = substr($value, -4, 4);
-      if(preg_match($regexp, $value)) {
-        $userHasSaveGame = 1;
-        $filename = $value;
-      }
-    }
-    if($userHasSaveGame) {
+
+    if(file_exists($saveGamePath . $filename)) {
       $file = fopen($saveGamePath.$filename, 'r');
       $data = fread($file, 100000);
       fclose($file);
@@ -47,26 +38,17 @@ function load_game($uid) {
 
 function save_game($uid, $data = "{}") {
   global $saveGamePath;
-  $userHasSaveGame = 0;
 
   $files = scandir($saveGamePath);
-  $filename = "";
-  $regexp = '/\_'.$uid.'\.js/';
+  $filename = $uid . '.json';
 
-  foreach ($files as $key => $value) {
-    $id = substr($value, -4, 4);
-    if(preg_match($regexp, $value)) {
-      $userHasSaveGame = 1;
-      $filename = $value;
-      echo $value;
-    }
-  }
-  if($userHasSaveGame) {
+  if(file_exists($saveGamePath . $filename)) {
     $file = fopen($saveGamePath.$filename, 'w');
     fwrite($file, $data);
     fclose($file);
+    echo "saved!";
   }else {
-    $filename = time()."_".$uid.".json";
+    $filename = $uid.".json";
     $file = fopen($saveGamePath.$filename, 'w');
     fwrite($file, $data);
     fclose($file);
@@ -75,7 +57,7 @@ function save_game($uid, $data = "{}") {
 }
 
 function create_new_game() {
-  $uid = increase_user_count();
+  $uid = time()."_". increase_user_count();
   save_game($uid);
   return json_encode(array("newGameCreated" => true,"uid" => $uid));
 }
