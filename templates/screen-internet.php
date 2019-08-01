@@ -1,7 +1,23 @@
 <?php ?>
 <section id="screen-internet" class="screen-section internet">
+  
   <div id="wp-search" class="webpage active">
-    <div>
+    <div class="ascii">
+      
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!--<div>
       <div class="wp-header flex justify-center">
         <p class="wp-headline">Findo</p>
       </div>
@@ -17,8 +33,9 @@
         Type "work" to buy workers that can fix bugs for you.<br/>
         Type "intranet" to manage your workers. Assign them to a bug or upgrade them.
       </p>
-    </div>
+    </div>-->
   </div>
+  
   <div id="wp-workers" class="webpage">
     <div class="wp-header flex justify-center">
       <p class="wp-headline">GET NEW EMPLOYES</p>
