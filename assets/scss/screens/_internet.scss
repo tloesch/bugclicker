@@ -1,18 +1,70 @@
 // INTERNET
 
 #screen-internet {
-  .webpage {
-    width: 100%;
-    display: none;
-    &.active {
-      display: block;
+  flex-direction: column;
+  align-items: center;
+  .webpage-navigation {
+    width: 1240px;
+    input.navbar{
+      width: 816px;
+      border: none;
+      font-family: "freemono";
+      font-size: 1em;
     }
-    .wp-header {
+  }
+  .outline {
+    margin-left: -2px;
+    .webpage {
+      display: none;
+      width: 100%;
+      width: calc(1240px - 3.3em);
+      max-width: calc(1240px - 3.3em);
+      max-height: 724px;
+      padding: 1em;
+      overflow: auto;
+      white-space: normal;
+      user-select: text;
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -khtml-user-select: text;
+      -ms-user-select: text;
+      &.active {
+        display: block;
+      }
+      .wp-headline {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin: 0.5em;
+      }
+      .intro {
+        font-size: 1.25em;
+      }
+      .wp-content {
+        width: 100%;
+        .worker-wrap {
+          margin: 2em 0em;
+        }
 
+      }
     }
-    .wp-content {
-      .worker-wrap {
-        max-width: 49%;
+  }
+  .underline {
+    margin-left: -2px;
+  }
+  #wp-workers {
+    .worker-wrap {
+      .wrap-stats {
+        padding: 1.1em 1em;
+        .emp-stats {
+          p {
+            white-space: pre;
+            margin: 0;
+          }
+        }
+        .emp-buy {
+          margin-top: 2em;
+        }
       }
     }
   }

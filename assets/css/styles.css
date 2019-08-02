@@ -8,6 +8,13 @@ button:focus {
   outline: none; }
 button::-moz-focus-inner {
   border: 0; }
+button.ascii {
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  line-height: 1em;
+  background: none; }
 
 .flex, .active {
   display: flex !important; }
@@ -193,10 +200,10 @@ section {
 .ppc-percents {
   position: absolute;
   border-radius: 50%;
-  left: calc(50% - 43.47826px/2);
-  top: calc(50% - 43.47826px/2);
-  width: 43.47826px;
-  height: 43.47826px;
+  left: calc(50% - 43.4782608696px/2);
+  top: calc(50% - 43.4782608696px/2);
+  width: 43.4782608696px;
+  height: 43.4782608696px;
   background: #fff;
   text-align: center;
   border: none; }
@@ -217,13 +224,54 @@ section {
 #screen-home #company-panel {
   width: 350px; }
 
-#screen-internet .webpage {
-  width: 100%;
-  display: none; }
-  #screen-internet .webpage.active {
-    display: block; }
-  #screen-internet .webpage .wp-content .worker-wrap {
-    max-width: 49%; }
+#screen-internet {
+  flex-direction: column;
+  align-items: center; }
+  #screen-internet .webpage-navigation {
+    width: 1240px; }
+    #screen-internet .webpage-navigation input.navbar {
+      width: 816px;
+      border: none;
+      font-family: "freemono";
+      font-size: 1em; }
+  #screen-internet .outline {
+    margin-left: -2px; }
+    #screen-internet .outline .webpage {
+      display: none;
+      width: 100%;
+      width: calc(1240px - 3.3em);
+      max-width: calc(1240px - 3.3em);
+      max-height: 724px;
+      padding: 1em;
+      overflow: auto;
+      white-space: normal;
+      user-select: text;
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -khtml-user-select: text;
+      -ms-user-select: text; }
+      #screen-internet .outline .webpage.active {
+        display: block; }
+      #screen-internet .outline .webpage .wp-headline {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin: 0.5em; }
+      #screen-internet .outline .webpage .intro {
+        font-size: 1.25em; }
+      #screen-internet .outline .webpage .wp-content {
+        width: 100%; }
+        #screen-internet .outline .webpage .wp-content .worker-wrap {
+          margin: 2em 0em; }
+  #screen-internet .underline {
+    margin-left: -2px; }
+  #screen-internet #wp-workers .worker-wrap .wrap-stats {
+    padding: 1.1em 1em; }
+    #screen-internet #wp-workers .worker-wrap .wrap-stats .emp-stats p {
+      white-space: pre;
+      margin: 0; }
+    #screen-internet #wp-workers .worker-wrap .wrap-stats .emp-buy {
+      margin-top: 2em; }
 
 #screen-city .city-loc {
   width: 100%;

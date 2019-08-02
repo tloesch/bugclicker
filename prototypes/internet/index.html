@@ -4,17 +4,40 @@
   <meta charset="utf-8">
   <title>Internet - homescreen</title>
   <link rel="stylesheet" type="text/css" href="../../assets/css/styles.css">
+  <style type="text/css">
+    .webpage-navigation {
+      
+    }
+    .webpage-navigation input.navbar{
+          width: 816px;
+          border: none;
+          font-family: "freemono";
+          font-size: 1em;
+    }
+
+    .webpage-navigation button.ascii {
+      font-size: 1em;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      line-height: 1em;
+      background: none;
+    }
+
+
+
+  </style>
 </head>
 <body>
 <section id="screen-internet" class="screen-section internet active">
   <div class="ascii webpage-navigation">
-╔══════════════════════════════════════════════════════════════════════════╗
-║  .-----..-----..---.            .----------------------------------.     ║
-║  | <-- || --> || H |  Location: | about:                           |     ║
-║  `¯¯¯¯¯´`¯¯¯¯¯´`¯¯¯´            `----------------------------------´     ║
-╚══════════════════════════════════════════════════════════════════════════╝
-
-
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  .-----..-----. .---.            .---------------------------------------------------------------------------------------.    ║
+║  <button class="ascii">| <-- |</button><button class="ascii">| --> |</button> <button class="ascii">| H |</button>  <b>Location:</b> | <input class="navbar" type="text" value="about: "/> |    ║
+║  `¯¯¯¯¯´`¯¯¯¯¯´ `¯¯¯´            `---------------------------------------------------------------------------------------´    ║
+╟════════════╤════════════════════════╤═══════════════════════╤═══════════════════════╤═╤═══════════════════════════════════════╢
+║ <b>Favorites:</b> ║ <button class="ascii" onclick=""><u>http://job-offers.com/</u></button> ║ <button class="ascii"><u>http://cool-news.com/</u></button> ║ here could be your ad ║+║                                       ║
+╚════════════╧════════════════════════╧═══════════════════════╧═══════════════════════╧═╧═══════════════════════════════════════╝
   </div>
   <div id="wp-search" class="webpage active">
   
