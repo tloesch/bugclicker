@@ -1,12 +1,12 @@
 <?php ?>
-<section id="screen-internet" class="screen-section internet">
+<section id="screen-internet" class="screen-section internet ">
   <div class="ascii webpage-navigation">
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║  .-----..-----. .---.            .---------------------------------------------------------------------------------------.    ║
-║  <button class="ascii">| <-- |</button><button class="ascii">| --> |</button> <button class="ascii" onclick="search('wp-search')">| H |</button>  <b>Location:</b> | <input id="wp-searchField" class="navbar" type="text" value="about: "/> |    ║
+║  <button class="ascii">| <-- |</button><button class="ascii">| --> |</button> <button class="ascii" onclick="pages.start.activate()">| H |</button>  <b>Location:</b> | <input id="wp-searchField" class="navbar" type="text" value="home:"/> |    ║
 ║  `¯¯¯¯¯´`¯¯¯¯¯´ `¯¯¯´            `---------------------------------------------------------------------------------------´    ║
 ╟════════════╤════════════════════════╤═══════════════════════╤═══════════════════════╤═╤═══════════════════════════════════════╢
-║ <b>Favorites:</b> ║ <button class="ascii" onclick="search('wp-workers')"><u>http://job-offers.com/</u></button> ║ <button class="ascii"><u>http://cool-news.com/</u></button> ║ here could be your ad ║+║                                       ║
+║ <b>Favorites:</b> ║ <button class="ascii" onclick="pages.workers.activate()"><u>http://job-offers.com/</u></button> ║ <button class="ascii"><u>http://cool-news.com/</u></button> ║ here could be your ad ║+║                                       ║
 ╟════════════╧════════════════════════╧═══════════════════════╧═══════════════════════╧═╧═══════════════════════════════════════╢</div>
 <div class="ascii flex outline">║
 ║
@@ -53,12 +53,12 @@
 ║
 ║
 ║
-<div id="wp-search" class="webpage active">
+<div id="wp-start" class="webpage active">
 
   <div>
      
   </div>
-</div><div id="wp-workers" class="webpage">
+</div><div id="wp-workers" class="webpage ">
   <div class="wp-content">
     <p class="wp-headline">GET NEW EMPLOYEES</p>
     <p class="intro"><b>Employee groups available:</b></p>
@@ -89,22 +89,22 @@
         </div>
       </div>
     </div>
-
     <div id="buy-worker-mk" class="worker-wrap">
       <div class="emp-type"><b>Monkey</b></div>
       <div class="emp-desc">
-        <p>Monkeys are not very well programmers but they are much cuter and you know what people say about monkeys.<br/>If you put 100 monkeys with typewriters in a room long enough, eventually you'll get a bugfix.</p>
+        <p>Monkeys are not very well programmers but they are very cute and you know what people say about monkeys.<br/>If you put 100 monkeys with typewriters in a room long enough, eventually you'll get a bugfix.</p>
       </div>
       <div class="flex">
         <div class="emp-image ascii">+++++++++++++++++++++
 +                   +
-+       ,=""=,      +
-+      C o _o;      +
-+      /\  @ )      +
-+     /  `--´ \     +
-+    (_/  . .\_)    +
-+      \_(/-\)      +
-+                   +
++      .-"""-.      +
++    _/ .-.-. \_    +
++   ( (´ O O `) )   +
++    |/   ^   \|    +
++     \ `---´ /     +
++     /`-...-´\     +
++    /         \    +
++  (´)         (`)  +
 +++++++++++++++++++++</div>
         <div class="wrap-stats">
             <div class="emp-stats">
@@ -122,7 +122,7 @@
     <p class="wp-headline">MANAGE YOUR EMPLOYES</p>
   </div>
   <div>
-    <button onclick="search('wp-search')">Back to Search</button><br/><br/>
+    <button onclick="search('wp-start')">Back to Search</button><br/><br/>
   </div>
   <div class="wp-content flex wrap justify-between">
     <div class="worker-wrap">
