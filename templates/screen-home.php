@@ -52,16 +52,5 @@
       </p>
     </div>
 
-    <div id="company-panel">
-      <div class="inner">
-        <input id="company-name" type="text" value="COMPANY_NAME"></input>
-        <div id="user_level">
-          <pre id="lvl"></pre>
-        </div>
-        <div id="money-counter" class="money-counter">0$</div>
-
-      </div>
-    </div>
-
   </div>
 </section>

@@ -6,7 +6,7 @@
 ║  <button class="ascii">| <-- |</button><button class="ascii">| --> |</button> <button class="ascii" onclick="pages.start.activate()">| H |</button>  <b>Location:</b> | <input id="wp-searchField" class="navbar" type="text" value="home:"/> |    ║
 ║  `¯¯¯¯¯´`¯¯¯¯¯´ `¯¯¯´            `---------------------------------------------------------------------------------------´    ║
 ╟════════════╤════════════════════════╤═══════════════════════╤════════════════════════╤═══════════════════════╤═╤══════════════╢
-║ <b>Favorites:</b> ║ <button class="ascii" onclick="pages.workers.activate()"><u>http://job-offers.com/</u></button> ║ <button class="ascii"><u>http://cool-news.com/</u></button> ║ <button class="ascii" onclick="pages.intranet.activate()"><u>http://intranet.local/</u></button> ║ here could be your ad ║+║                                       ║
+║ <b>Favorites:</b> ║ <button class="ascii" onclick="pages.workers.activate()"><u>http://job-offers.com/</u></button> ║ <button class="ascii"><u>http://cool-news.com/</u></button> ║ <button class="ascii" onclick="pages.intranet.activate()"><u>http://intranet.local/</u></button> ║ here could be your ad ║+║              ║
 ╟════════════╧════════════════════════╧═══════════════════════╧════════════════════════╧═══════════════════════╧═╧══════════════╢</div>
 <div class="ascii flex outline">║
 ║
@@ -153,7 +153,7 @@ W  W  W  EEEEE   BBBBB    V  V     II    EEEEE   W  W  W  EEEEE   RRRR'
 </div><div id="wp-intranet" class="webpage">
   <div class="wp-content">
     <div class="wp-header flex justify-center">
-      <p class="wp-headline">MANAGE YOUR EMPLOYES</p>
+      <p class="wp-headline">MANAGE YOUR EMPLOYEES</p>
     </div>
     <div class="flex wrap justify-evenly">
       <div class="worker-wrap">

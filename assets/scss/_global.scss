@@ -1,5 +1,6 @@
- @font-face {
-  font-family: "freemono";
+@import "variables";
+@font-face {
+  font-family: $font;
   src: url("../fonts/FreeMono.ttf"),url("../fonts/FreeMono.otf");
 }
 
@@ -59,7 +60,7 @@ button {
 
 .ascii, pre {
   white-space: pre;
-  font-family: "freemono";
+  font-family: $font;
   cursor: default;
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
   -moz-user-select: none; /* mozilla browsers */

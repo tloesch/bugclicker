@@ -39,9 +39,10 @@ var pages = {
   "intranet": new webpage("wp-intranet", "Managing your company", "http://intranet.local/", [], 0, 1),
 }
 
+// TODO: Combine with city in main
 function deactivate_all_pages() {
   // Create array out of object
-  pages_entries = Object.entries(pages);
+  let pages_entries = Object.entries(pages);
   // Loop through all pages and deactivate the active ones
   pages_entries.forEach(function(page) {
     if(page[1].status == 1) {
@@ -52,7 +53,7 @@ function deactivate_all_pages() {
 
 function activate_page_by_url(url) {
   // Create array out of object
-  pages_entries = Object.entries(pages);
+  let pages_entries = Object.entries(pages);
   // Loop through all pages and deactivate the active ones
   pages_entries.forEach(function(page) {
     if(page[1].url == url) {

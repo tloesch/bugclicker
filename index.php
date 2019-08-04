@@ -35,6 +35,15 @@
     <input type=""/>
   </div><?php */ ?>
 
+   <div id="company-panel" class="open">
+    <button onclick="toggle_company_panel()" class="ascii toggle-panel">CLOSE</button>
+      <div class="inner">
+        <input id="company-name" type="text" value="COMPANY_NAME"></input>
+        <div id="user_level">
+          <pre id="lvl"></pre>
+        </div>
+        <div id="money-counter" class="money-counter">0$</div>
+      </div>
   </div>
 
   <script src="js/base/variables.js"></script>

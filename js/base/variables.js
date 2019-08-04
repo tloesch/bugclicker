@@ -223,3 +223,5 @@ var STATS_DATA = {
 // var STAT_HBUG_FIX_TOTAL = 0;
 // var STAT_MBUG_TOTAL = 0;
 // var STAT_MBUG_FIX_TOTAL = 0;
+
+var company_panel =  document.getElementById('company-panel');

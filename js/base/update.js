@@ -167,6 +167,19 @@ function init_company_name() {
   });
 }
 
+function toggle_company_panel() {
+  var btn = company_panel.querySelector("button");
+  if(company_panel.classList.contains('open')) {
+    company_panel.classList.remove('open');
+    company_panel.style.right = "calc(-" + company_panel.offsetWidth + "px + 1.9em)";
+    btn.innerHTML = "OPEN";
+  }else {
+    company_panel.classList.add('open');
+    company_panel.style.right = "0px";
+    btn.innerHTML = "CLOSE";
+  }
+}
+
 function update_stat_list() {
 
 }
