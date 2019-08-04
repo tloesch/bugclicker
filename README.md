@@ -1,7 +1,7 @@
 # bugclicker
 
 Bugclicker is a js browser game inspired by cookieclicker and candybox.
-The game is available at bugclicker.morhero.de
+The game is available at [bugclicker.morhero.de](https://bugclicker.morhero.de)
 
 Currently bugclicker is still in a early alpha state. Version 1.0 is planned to be finished in October 2019.
 
