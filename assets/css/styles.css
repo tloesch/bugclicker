@@ -28,6 +28,8 @@ button.ascii {
     justify-content: space-around; }
   .flex.justify-between, .active.justify-between {
     justify-content: space-between; }
+  .flex.justify-evenly, .active.justify-evenly {
+    justify-content: space-evenly; }
   .flex.align-top, .active.align-top {
     align-items: top; }
   .flex.align-center, .active.align-center {

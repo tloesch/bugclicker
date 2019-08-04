@@ -28,7 +28,6 @@ class webpage {
   }
 
   deactivate() {
-    console.log(this.id);
     this.status = 0;
     this.dom.classList.remove('active');
   }
@@ -37,6 +36,7 @@ class webpage {
 var pages = {
   "start": new webpage("wp-start", "Browser starting page", "home:", [], 1, 0),
   "workers": new webpage("wp-workers", "Job offers", "http://job-offers.com/", [], 0, 1),
+  "intranet": new webpage("wp-intranet", "Managing your company", "http://intranet.local/", [], 0, 1),
 }
 
 function deactivate_all_pages() {
