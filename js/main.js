@@ -307,7 +307,6 @@ function load_save_game() {
         init_helpers();
         refresh_all_screen_elements();
         save_game();
-        window.location.search += "?uid=" + dataObj.uid;
       }
       game_loaded();
     },
@@ -320,14 +319,18 @@ function save_game() {
   $.ajax({
     url: '/php/main.php',
     type: 'POST',
+    async: true,
     data: {
       task: "saveGame",
       uid: USER["id"],
       data: saveData
     },
-    success: function(msg) {console.log(msg);},
+    success: function(msg) {
+      console.log(msg);
+      window.location.search += "?uid=" + USER["id"];
+    },
     error: function(a, b, c){
-      alert("ERROR: Failed to save game")
+      alert("ERROR: Failed to save game");
       console.log(a);
       console.log(b);
       console.log(c);
