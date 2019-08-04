@@ -38,11 +38,52 @@
     </div>
   </div>
   <div id="city-shop" class="city-loc">
-    <div class="shop-header flex justify-center">
-      BUY ELECTRONICS TO INCREASE YOUR PRODUCTIVITY IN v0.7
-    </div>
-    <div class="shop-product">
+    <div class="shop ascii">
 
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XX                           XX
+XX                           XX
+XX                           XX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XX                           XX
+XX                           XX
+XX                           XX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XX                           XX
+XX                           XX
+XX                           XX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                       
+XX                           XX
+XX                           XX
+XX                           XX                               _____
+XX                           XX                              //////\
+XX                           XX ._______.                  (| o   o |)
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX |      o|                   : . : . :
+XX                           XX | _____ |                    `.`-´.´
+XX                           XX ||_____||                 .--' """ '--.
+XX                           XX |       |                /             \
+XX                           XX | .´"`. |               :  /|       |\  :
+XX                           XX ||--+--||         ._____|__||_______||__|______________________________.
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX | '._.' |       .´                                                   .´|
+XX                           XX |_______|     .´___________________________________________________.´ .|
+                                             |MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMW|.´.|
+                                             |WMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMWM|.´.|
+                                             |MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMW|.´.|
+                                             |WMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMWM|.´.|
+                                             |MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMW|.´.|
+                                             |WMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMWM|.´.|
+                                             |MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMW|.´.|
+                                             |WMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMWM|.´.|
+                                             |MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMW|.´.|
+                                             |WMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMWM|.´.´
+                                             |MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWMWMWMWMWMWMWMW|.´
+<p>
+  BUY ELECTRONICS TO INCREASE YOUR PRODUCTIVITY IN v0.7
+</p>
     </div>
     <button class="ascii" onclick="buildings.overview.activate()"><u>BACK TO CITY</u></button>
   </div>
