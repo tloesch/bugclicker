@@ -266,7 +266,7 @@ function load_save_game() {
         init_helpers();
         refresh_all_screen_elements();
         save_game();
-        window.location.search += "?uid=" + dataObj.uid;
+        window.location.href = window.location.origin + window.location.pathname + "?uid=" + dataObj.uid;
       }
       game_loaded();
     },
