@@ -17,7 +17,7 @@ class building {
     }
 
     deactivate() {
-      console.log(this.id);
+      //console.log(this.id);
       this.status = 0;
       this.dom.classList.remove('active');
     }

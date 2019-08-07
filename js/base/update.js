@@ -180,6 +180,22 @@ function toggle_company_panel() {
   }
 }
 
+function update_worker_cost_elements () {
+  const scriptkiddi = document.querySelectorAll(".sk-cost");
+  scriptkiddi.forEach( function(e) {
+    e.innerHTML = skHelper.cost;
+  });
+}
+
+function update_worker_upgrade_elements () {
+  const scriptkiddi = document.querySelectorAll(".sk-upgradeCost");
+  scriptkiddi.forEach( function(e) {
+    e.innerHTML = skHelper.upgradeCost;
+  });
+}
+
+
+
 function update_stat_list() {
 
 }
@@ -188,6 +204,9 @@ function refresh_all_screen_elements() {
   refresh_money();
   update_user_level();
   init_company_name();
+  update_worker_cost_elements();
+  update_worker_upgrade_elements();
+
   // TODO: Auto loop through all bugs
   bbug.refresh();
   hbug.refresh();

@@ -7,7 +7,7 @@ var USER_WORLD_POS = 0; // DEFAULT 0 (START SCREEN)
 
 var USER = {
   "id": 0,
-  "money": 0,
+  "money": 10000,
   "level": 0,
   "xp": 0,
   "companyName": ""
@@ -80,7 +80,7 @@ var HBUG_DATA = {
 
   // MANDELBUG
 var MBUG_DATA = {
-  "name": "heisenbug",
+  "name": "mandelbug",
   "active": 0,
   "amount": 0,
   "autoAdd": 1,
@@ -105,7 +105,7 @@ var MBUG_DATA = {
 
   // SCHROEDINBUG
 var SBUG_DATA = {
-  "name": "heisenbug",
+  "name": "schroedinbug",
   "active": 0,
   "amount": 0,
   "autoAdd": 1,
@@ -143,9 +143,9 @@ var SKHELPER_DATA = {
   "timer": 5000,
   "pointsAdd": 1,
   "target": 0,
-  "cost": 10,
+  "cost": 20,
   "level": 1,
-  "upgradeCost": 5
+  "upgradeCost": 20
 }
 
 // STORY

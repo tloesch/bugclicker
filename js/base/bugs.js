@@ -137,14 +137,17 @@ bug.prototype.fix = function(fixPoints) {
     var rest = fixPoints + this.fixPointsAmount;
     var fixAdd = 0;
 
-    while(bugFixingProgress) {
-      if (rest >= this.fixPointsReq) {
+    while(bugFixingProgress ) {
+      if (rest >= this.fixPointsReq && this.amount > 0) {
         this.amount -= this.fixAdd;
         fixAdd += this.fixAdd;
         this.statFixes += this.fixAdd;
         rest -= this.fixPointsReq;
       }
-      if (rest < this.fixPointsReq) {
+      if (rest < this.fixPointsReq || this.amount < 1 ) {
+        if(this.amount < 1) {
+          rest = 0;
+        }
         bugFixingProgress = 0;
       }
     }

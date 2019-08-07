@@ -118,12 +118,12 @@ W  W  W  EEEEE   BBBBB    V  V     II    EEEEE   W  W  W  EEEEE   RRRR'
             <p>Speed: [x][ ][ ][ ][ ]</p>
             <p>Knowledge: [x][ ][ ][ ][ ]</p>
           </div>
-          <div class="emp-buy"><button onclick="skHelper.buy()" class="ascii"><b><u>BUY FOR 10$</u></b></button></div>
+          <div class="emp-buy"><button onclick="skHelper.buy()" class="ascii"><b><u>BUY FOR <span class="sk-cost">__</span>$</u></b></button></div>
         </div>
       </div>
     </div>
     <div id="buy-worker-mk" class="worker-wrap">
-      <div class="emp-type"><b>Monkey</b></div>
+      <div class="emp-type"><b>Monkey (COMING SOON)</b></div>
       <div class="emp-desc">
         <p>Monkeys are not very well programmers but they are very cute and you know what people say about monkeys.<br/>If you put 100 monkeys with typewriters in a room long enough, eventually you'll get a bugfix.</p>
       </div>
@@ -145,7 +145,7 @@ W  W  W  EEEEE   BBBBB    V  V     II    EEEEE   W  W  W  EEEEE   RRRR'
               <p>Speed: [ ][ ][ ][ ][ ]</p>
               <p>Knowledge: [ ][ ][ ][ ][ ]</p>
             </div>
-          <div class="emp-buy"><button onclick="monkeyHelper.buy()" class="ascii"><b><u>BUY FOR 15$</u></b></button></div>
+          <div class="emp-buy"><button onclick="" class="ascii"><b><s>BUY FOR 15$</s></b></button></div>
         </div>
       </div>
     </div>
@@ -170,13 +170,13 @@ W  W  W  EEEEE   BBBBB    V  V     II    EEEEE   W  W  W  EEEEE   RRRR'
 +++++++++++++++++++++
 
 </div>
-        <div class="emp-buy"><button onclick="skHelper.upgrade()" class="ascii"><u>UPGRADE SCRIPT KIDDI</u></button></div>
+        <div class="emp-buy"><button onclick="skHelper.upgrade()" class="ascii"><u>UPGRADE SCRIPT KIDDI FOR <span class="sk-upgradeCost">__</span>$</u></button></div>
         <div class="emp-buy"><button onclick="skHelper.set_target(1)" class="ascii"><u>SET SCRIPT KIDDI TARGET TO BOHRBUG</u></button></div>
         <div class="emp-buy"><button onclick="skHelper.sell()" class="ascii"><u>SELL SCRIPT KIDDI</u></button></div>
       </div>
 
       <div class="worker-wrap">
-        <div class="emp-type"><b>Monkey</b></div>
+        <div class="emp-type"><b>Monkey (COMING SOON)</b></div>
         <div class="emp-image ascii">+++++++++++++++++++++
 +                   +
 +      .-"""-.      +
@@ -188,9 +188,9 @@ W  W  W  EEEEE   BBBBB    V  V     II    EEEEE   W  W  W  EEEEE   RRRR'
 +    /         \    +
 +  (´)         (`)  +
 +++++++++++++++++++++</div>
-        <div class="emp-buy"><button onclick="monkey.upgrade()" class="ascii"><u>UPGRADE MONKEY</u></button></div>
-        <div class="emp-buy"><button onclick="monkey.set_target(1)" class="ascii"><u>SET MONKEY TARGET TO BOHRBUG</u></button></div>
-        <div class="emp-buy"><button onclick="monkey.sell()" class="ascii"><u>SELL MONKEY</u></button></div>
+        <div class="emp-buy"><button onclick="" class="ascii"><s>UPGRADE MONKEY</s></button></div>
+        <div class="emp-buy"><button onclick="" class="ascii"><s>SET MONKEY TARGET TO BOHRBUG</s></button></div>
+        <div class="emp-buy"><button onclick="" class="ascii"><s>SELL MONKEY</s></button></div>
       </div>
 
       <div class="worker-wrap">
