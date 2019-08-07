@@ -38,8 +38,10 @@ helper.prototype.buy = function() {
 helper.prototype.sell = function() {
   if(this.amount > 0) {
     this.amount -= 1;
-    USER["money"] += this.cost * 0.8;
+    this.cost -= Math.round(this.cost * 0.5)
+    USER["money"] += Math.round(this.cost * 0.5);
     update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
+    update_worker_cost_elements();
   }
 }
 
@@ -78,4 +80,18 @@ helper.prototype.work = function() {
         console.log("TARGET IS NOT KNOWN: " + this.target);
     }
   }
+}
+
+helper.prototype.get_save_data_obj = function() {
+  var dataObj = {
+    [this.type]: {
+      ['amount']:this.amount,
+      ['bugTarget']:this.bugTarget,
+      ['cost']:this.cost,
+      ['level']:this.level,
+      ['upgradeCost']:this.upgradeCost
+    }
+  }
+  console.log(dataObj)
+  return dataObj;
 }

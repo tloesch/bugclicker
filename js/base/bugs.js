@@ -192,7 +192,7 @@ bug.prototype.get_save_data_obj = function() {
       ['fixPointsReq']:this.fixPointsReq,
     }
   }
-  console.log(dataObj)
+  //console.log(dataObj)
   return dataObj;
 }
 
