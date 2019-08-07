@@ -137,14 +137,17 @@ bug.prototype.fix = function(fixPoints) {
     var rest = fixPoints + this.fixPointsAmount;
     var fixAdd = 0;
 
-    while(bugFixingProgress) {
-      if (rest >= this.fixPointsReq) {
+    while(bugFixingProgress ) {
+      if (rest >= this.fixPointsReq && this.amount > 0) {
         this.amount -= this.fixAdd;
         fixAdd += this.fixAdd;
         this.statFixes += this.fixAdd;
         rest -= this.fixPointsReq;
       }
-      if (rest < this.fixPointsReq) {
+      if (rest < this.fixPointsReq || this.amount < 1 ) {
+        if(this.amount < 1) {
+          rest = 0;
+        }
         bugFixingProgress = 0;
       }
     }
@@ -189,7 +192,7 @@ bug.prototype.get_save_data_obj = function() {
       ['fixPointsReq']:this.fixPointsReq,
     }
   }
-  console.log(dataObj)
+  //console.log(dataObj)
   return dataObj;
 }
 

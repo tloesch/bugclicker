@@ -2,9 +2,6 @@ $(document).ready(function(){
   init();
 })
 
-// TODO: ADD MORE BUGTYPES
-// TODO: ADD AUTO FIXERS
-
 function init() {
   set_screen_variables();
   load_save_game();
@@ -14,7 +11,6 @@ function game_loaded() {
   init_helpers();
   refresh_all_screen_elements();
   start_timers();
-  draw_world();
   init_navigation();
 }
 
@@ -48,14 +44,6 @@ function refresh_money() {
   DRAW FUNCTIONS
   ##############*/
 
-function draw_world() {
-
-}
-
-function drawInfo() {
-
-}
-
 function draw_debug_panel() {
   if(DEBUG_PANEL_TOGGLE) {
     document.getElementById('debug-panel').innerHTML = "<div></div>";
@@ -72,33 +60,10 @@ function init_navigation() {
   var screenInternetElem = document.getElementById('screen-internet');
   var screenOptionsElem = document.getElementById('screen-options');
 
-
-  // TODO: CHANGE TO LOOP WITH querySelectorAll AND forEach
-
   var navElements = document.querySelectorAll('.nav-elem');
   var screenElements = document.querySelectorAll('.screen-section');
   var counter = 0;
   var counterMax = screenElements.length;
-/*
-  navElements.forEach(function(elem) {
-    console.log(counter);
-    elem.addEventListener('click', function() {
-      if(!this.classList.contains('active')) {
-        this.classList.add('active');
-      }
-      console.log(counter);
-      if(!screenElements[counter].classList.contains('active')) {
-        screenElements[counter].classList.add('active');
-      }
-      for(var i = 0; i < counterMax; i++) {
-        if(i != counter) {
-          screenElements[i].classList.remove('active');
-        }
-      }
-    })
-    counter++;
-  });
-*/
 
   homeElem.addEventListener('click', function() {
     if(!this.classList.contains('nav_active')){
@@ -193,7 +158,6 @@ function get_params(req_param = "") {
   
 }
 
-// ADD CUSTOM PW TO LOAD SAVEGAME
 function load_save_game() {
   var dataJSON;
   var userId = get_params("uid");
@@ -215,11 +179,6 @@ function load_save_game() {
       var dataObj = JSON.parse(data);
       if(typeof dataObj.newGameCreated === "undefined") {
 
-        // for(var key in dataObj) {
-        // if(key.startsWith('bohrbug_')) {
-
-        // TODO: change to loop
-        // IDEA: create call to get all instanted bugs and retrieve there type. Loop through that types
         if(dataObj.bohrbug) {
           BBUG_DATA["amount"] = dataObj.bohrbug.amount;
           BBUG_DATA["active"] = dataObj.bohrbug.active;
@@ -307,6 +266,7 @@ function load_save_game() {
         init_helpers();
         refresh_all_screen_elements();
         save_game();
+        window.location.href = window.location.origin + window.location.pathname + "?uid=" + dataObj.uid;
       }
       game_loaded();
     },

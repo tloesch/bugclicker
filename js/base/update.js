@@ -167,6 +167,35 @@ function init_company_name() {
   });
 }
 
+function toggle_company_panel() {
+  var btn = company_panel.querySelector("button");
+  if(company_panel.classList.contains('open')) {
+    company_panel.classList.remove('open');
+    company_panel.style.right = "calc(-" + company_panel.offsetWidth + "px + 1.9em)";
+    btn.innerHTML = "OPEN";
+  }else {
+    company_panel.classList.add('open');
+    company_panel.style.right = "0px";
+    btn.innerHTML = "CLOSE";
+  }
+}
+
+function update_worker_cost_elements () {
+  const scriptkiddi = document.querySelectorAll(".sk-cost");
+  scriptkiddi.forEach( function(e) {
+    e.innerHTML = skHelper.cost;
+  });
+}
+
+function update_worker_upgrade_elements () {
+  const scriptkiddi = document.querySelectorAll(".sk-upgradeCost");
+  scriptkiddi.forEach( function(e) {
+    e.innerHTML = skHelper.upgradeCost;
+  });
+}
+
+
+
 function update_stat_list() {
 
 }
@@ -175,6 +204,9 @@ function refresh_all_screen_elements() {
   refresh_money();
   update_user_level();
   init_company_name();
+  update_worker_cost_elements();
+  update_worker_upgrade_elements();
+
   // TODO: Auto loop through all bugs
   bbug.refresh();
   hbug.refresh();

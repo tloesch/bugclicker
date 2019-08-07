@@ -45,22 +45,51 @@
     </div>
 
     <div id="workplace-panel" class="ascii flex wrap">
-      <p>
-        Welcome to Bugclicker v0.5 alpha.<br/>
-        In this version of the Game you will only find the very basics of the game.<br/>
-        Go to Github to view what will be added in the future: <a href="https://github.com/MORHERO/bugclicker" target="_blank" rel="nofollow">Github Repository</a>
-      </p>
-    </div>
+<p>
+  Welcome to Bugclicker v0.6 alpha.<br/>
+  In this version of the Game you will only find the very basics of the game.<br/>
+  Go to Github to view what will be added in the future: <a href="https://github.com/MORHERO/bugclicker" target="_blank" rel="nofollow">Github Repository</a>
+</p>
+         _______________________          ___________________________________________________
+        ||           |     |   `----------       | _______      ______      _______          |
+        ||___________|     |                     ||\______)   .´      `.   (_____ /|         |
+        |                 .|                     || |____)   |          |   (____| |         |
+        |                 |                      || |____)   |          |   (____| |         |
+        |---.             |                      ||/______)   `.______-´   (______\|         |
+        |   |             |                                                                  |
+        |(0)|             |                                                ________          |
+        |   |      ___     |                                              |        |         |
+        |---'    .´.-.`.   |                                              |     °  | ====||  |
+        |        |(   )|   |                                              | .´|  X |  .--||  |
+        |        `.`-´.´   |                     |                        ||  |  X | |   ||  |
+        |       ___`"´___  |                     |                        | `.|  X |  '--||  |
+        |______|_________|_|________          ___|                        |        | ====||  |
+        ||               |         `----------   |                        |        |         |
+        ||               |                       |                 ||==== |        |         |
+        ||_______________|                       |                 ||--.  | X  |`. |         |
+        |                                        |                 ||   | | X  |  ||         |
+        |                                        |                 ||--'  | X  |.´ |         |
+        |                                        |                 ||==== |  °     |         |
+        |                                        |                        |________|         |
+        |                                        |                                           |
+        |                                        |                                           |
+        |       ________________                 |          ________                         |
+        |      |                |           .-.  |         |        |                        |
+        |      |   ___          |          | O | |         |     °  | ====||                 |
+        |      |   |.|          |           '-'  |         | .´|  X |  .--||                 |
+        |      |_______         |       ________ |         ||  |  X | |   ||                 |
+        |              |        |      (______ /||         | `.|  X |  '--||                 |
+        |              |        |       (_____| ||         |        | ====||                 |
+        |      ||====  |        |       (_____| ||         |        |                        |
+        |      || .-.  | X  |`. |       (_____| ||  ||==== |        |                        |
+        |      ||(°_°) | X  |  ||       (_____| ||  ||--.  | X  |`. |                        |
+        |      || `-´  | X  |.´ |       (_____| ||  ||   | | X  |  ||                        |
+        |      ||====  |  °     |       (_____| ||  ||--'  | X  |.´ |                        |
+        |              |        |      (_______\||  ||==== |  °     |                        |
+        |              |________|                |         |________|                        |
+        |____[--------------]___[------------]___|_______[------------]__[------------]______|
 
-    <div id="company-panel">
-      <div class="inner">
-        <input id="company-name" type="text" value="COMPANY_NAME"></input>
-        <div id="user_level">
-          <pre id="lvl"></pre>
-        </div>
-        <div id="money-counter" class="money-counter">0$</div>
 
-      </div>
     </div>
 
   </div>

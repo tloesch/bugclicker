@@ -28,16 +28,20 @@ helper.prototype.buy = function() {
   if(USER["money"] >= this.cost) {
     this.amount += 1;
     USER["money"] -= this.cost;
+    this.cost +=  this.cost;
+    update_worker_cost_elements();
     update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
-    console.log(this.type + ": " + this.amount);
+    //console.log(this.type + ": " + this.amount);
   }
 }
 
 helper.prototype.sell = function() {
   if(this.amount > 0) {
     this.amount -= 1;
-    USER["money"] += this.cost * 0.8;
+    this.cost -= Math.round(this.cost * 0.5)
+    USER["money"] += Math.round(this.cost * 0.5);
     update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
+    update_worker_cost_elements();
   }
 }
 
@@ -46,9 +50,10 @@ helper.prototype.upgrade = function() {
   if(USER["money"] >= this.upgradeCost) {
       this.level += 1;
       USER["money"] -= this.upgradeCost;
-      this.upgradeCost += this.upgradeCost * 0.5;
-      console.log("UPGRADE COST: " + this.upgradeCost);
+      this.upgradeCost += Math.round(this.upgradeCost + this.upgradeCost);
+      //console.log("UPGRADE COST: " + this.upgradeCost);
       update_counter(SCREEN_MONEY_COUNTER, USER["money"] + "$");
+      update_worker_upgrade_elements();
   }
 
   // console.log("HELPER UPGRADET: "+ this.level);
@@ -60,7 +65,7 @@ helper.prototype.set_target = function(t) {
 
 helper.prototype.work = function() {
   for(let i = 0; i < this.amount; i++) {
-    console.log("Helper "+this.type+"#"+i+" works on: " + this.bugTarget);
+    //console.log("Helper "+this.type+"#"+i+" works on: " + this.bugTarget);
     var points = (this.pointsAdd * this.amount) * (this.level / 4);
     switch (this.bugTarget) {
       case 0:
@@ -75,4 +80,18 @@ helper.prototype.work = function() {
         console.log("TARGET IS NOT KNOWN: " + this.target);
     }
   }
+}
+
+helper.prototype.get_save_data_obj = function() {
+  var dataObj = {
+    [this.type]: {
+      ['amount']:this.amount,
+      ['bugTarget']:this.bugTarget,
+      ['cost']:this.cost,
+      ['level']:this.level,
+      ['upgradeCost']:this.upgradeCost
+    }
+  }
+  console.log(dataObj)
+  return dataObj;
 }
