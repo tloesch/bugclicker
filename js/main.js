@@ -239,6 +239,14 @@ function load_save_game() {
           SBUG_DATA["fixPointsReq"] = dataObj.schroedinbug.fixPointsReq;
         }
 
+         if(dataObj.scriptkiddi) {
+          SKHELPER_AMOUNT = dataObj.scriptkiddi.amount;
+          SKHELPER_TARGET = dataObj.scriptkiddi.bugTarget;
+          SKHELPER_COST = dataObj.scriptkiddi.cost;
+          SKHELPER_LEVEL = dataObj.scriptkiddi.level;
+          SKHELPER_UPGRADE_COST = dataObj.scriptkiddi.upgradeCost;
+        }
+
       // }else {
         USER_WORLD_POS = dataObj.userWPos;
         OPTION_AUTO_SAVE_TIMER = dataObj.optASTimer;
@@ -314,9 +322,16 @@ function get_save_data() {
   var hbugSave = hbug.get_save_data_obj();
   var mbugSave = mbug.get_save_data_obj();
   var sbugSave = sbug.get_save_data_obj();
+  var skHelperSave = skHelper.get_save_data_obj();
   //TODO: improve
   var saveDataObjstate1 = $.extend({}, saveDataObj, bbugSave);
-  var fullsaveDataObj = $.extend({}, saveDataObjstate1, hbugSave);
+  var saveDataObjstate2 = $.extend({}, hbugSave, mbugSave);
+  var saveDataObjstate3 = $.extend({}, sbugSave, skHelperSave);
+  
+  var saveDataObjstate4 = $.extend({}, saveDataObjstate1, saveDataObjstate2);
+
+  var fullsaveDataObj = $.extend({}, saveDataObjstate4, saveDataObjstate3);
+  console.log(fullsaveDataObj);
   return JSON.stringify(fullsaveDataObj);
 }
 
