@@ -7,7 +7,7 @@ var USER_WORLD_POS = 0; // DEFAULT 0 (START SCREEN)
 
 var USER = {
   "id": 0,
-  "money": 10000,
+  "money": 0,
   "level": 0,
   "xp": 0,
   "companyName": ""
