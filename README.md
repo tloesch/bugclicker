@@ -7,12 +7,6 @@ Currently bugclicker is still in a early alpha state. Version 1.0 is planned to 
 
 ## Planned Updates
 
-0.6 alpha (ASCII rework)
-- Recreate internet
-- Recreate city
-- Add ASCII art to workers
-- Rework the Home screen
-
 0.7 alpha (content)
 - Add more user level
 - Add bugs
