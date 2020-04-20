@@ -25,3 +25,21 @@ Currently bugclicker is still in a early alpha state. Version 1.0 is planned to 
 
 1.0
 - More story, content, ascii etc.
+
+
+# Docker Setup
+
+
+## Pre Requirements
+
+- Install [Docker] https://docs.docker.com/install/
+- Install [Docker compose] https://docs.docker.com/compose/install/
+
+
+## Initialization
+- Copy *./environments.env.template* to *./environments.env*
+- Run ``docker-compose build``
+
+## Basic Usage: 
+Startup: ```docker-compose up -d```  
+Shutdown: ```docker-compose down```  
