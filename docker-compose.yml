@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  bugclicker:
+    env_file: ./environments.env    
+    hostname: bugclicker
+    build: .
+ 
+    ports:
+        - 3000:80
+        
+    volumes: 
+        - ./.docker/docker-php.ini:/usr/local/etc/php/conf.d/docker-php.ini
+        - ./.docker/bugclicker.conf:/etc/apache2/sites-available/000-default.conf
+        - ./app/var/log:/app/var/log
+        - ./app/var/session:/app/var/session
+        - ./app/src:/app/src
+        - ./app/data:/app/data

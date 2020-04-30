@@ -1,2 +1,3 @@
-.sass-cache/
-savegames/*
+environments.env
+/app/var/*
+/app/data/*
