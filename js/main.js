@@ -1,6 +1,6 @@
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function() {
   init();
-})
+});
 
 function init() {
   set_screen_variables();
@@ -11,7 +11,6 @@ function game_loaded() {
   init_helpers();
   refresh_all_screen_elements();
   start_timers();
-  init_navigation();
 }
 
 /*###############
@@ -23,7 +22,7 @@ function start_timers() {
 
   if(hbug.active == 1){hbug.activate();}
 
-  setInterval(function() {skHelper.work();}, skHelper.timer);
+  setInterval(function() {skHelper.work();}, 10);
 
   setInterval(function(){auto_save();}, OPTION_AUTO_SAVE_TIMER);
 }
@@ -41,89 +40,77 @@ function refresh_money() {
 }
 
 /*##############
-  DRAW FUNCTIONS
+  PAGE ELEMENTS
   ##############*/
 
+class navigation {
+
+  constructor(elements, screens, active_element) {
+      this.elements = elements; // @ARRAY - all navigation elements 
+      this.screens = screens; // @ARRAY - all screen elements 
+      this._active_element = active_element; // @OBJECT - current active navigation element
+      this._active_className = "nav_active"; // @STRING - classname for active elements
+      this._active_page_className = "active"; // @STRING - classname for active page
+
+      let me = this;
+
+      this.elements.forEach(function(element, key){
+        
+        // add click listener to all navigation elements
+        element.addEventListener("click", function(e) {
+          // if clicked element has active classname do nothing
+          if (e.target.classList.contains(this.active_className)) {
+            return;
+          }
+          // check if the outher or inner content of the element was clicked
+          if(e.target.classList.contains("nav-elem")) {
+            // set new active element
+            me.active_element = e.target;
+          } else {
+            // get the parent to have the required element
+            let target = e.target.parentElement;
+            // check again if the target is not already active or a wrong element
+            if(target.classList.contains("nav-elem") && !target.classList.contains(this.active_className)) {
+              // set new active element
+              me.active_element = target;
+            }else{return;}
+          }
+        })
+      });
+  }
+
+  set active_element(target) {
+    // get key of previous active page
+    let old_active_key = Object.keys(this.elements).find(key => this.elements[key] === this._active_element);
+    // get key of new active page
+    let new_active_key = Object.keys(this.elements).find(key => this.elements[key] === target);
+    
+    // remove active classname from old acitive element
+    this._active_element.classList.remove(this._active_className);
+    // set active class to new active element
+    target.classList.add(this._active_className);
+    // deactivate previous active screen
+    this.screens[old_active_key].classList.remove(this._active_page_className);
+    // active new active page
+    this.screens[new_active_key].classList.add(this._active_page_className);
+    
+    // save new active element
+    this._active_element = target;
+  }
+
+  get active_element() {
+    return this._active_element;
+  }
+
+}
+var main_navigation = new navigation(document.querySelectorAll(".nav-elem"), document.querySelectorAll(".screen-section"), document.querySelector(".nav-elem.nav_active"));
+
+/*
 function draw_debug_panel() {
   if(DEBUG_PANEL_TOGGLE) {
     document.getElementById('debug-panel').innerHTML = "<div></div>";
   }
-}
-
-function init_navigation() {
-  var homeElem = document.getElementById('nav-home');
-  var cityElem = document.getElementById('nav-city');
-  var internetElem = document.getElementById('nav-internet');
-  var optionsElem = document.getElementById('nav-options');
-  var screenHomeElem = document.getElementById('screen-home');
-  var screenCityElem = document.getElementById('screen-city');
-  var screenInternetElem = document.getElementById('screen-internet');
-  var screenOptionsElem = document.getElementById('screen-options');
-
-  var navElements = document.querySelectorAll('.nav-elem');
-  var screenElements = document.querySelectorAll('.screen-section');
-  var counter = 0;
-  var counterMax = screenElements.length;
-
-  homeElem.addEventListener('click', function() {
-    if(!this.classList.contains('nav_active')){
-      this.classList.add('nav_active');
-      screenHomeElem.classList.add('active');
-    }
-    optionsElem.classList.remove('nav_active');
-    cityElem.classList.remove('nav_active');
-    internetElem.classList.remove('nav_active');
-
-    screenCityElem.classList.remove('active');
-    screenInternetElem.classList.remove('active');
-    screenOptionsElem.classList.remove('active');
-  })
-
-  cityElem.addEventListener('click', function() {
-    if(!this.classList.contains('nav_active')){
-      this.classList.add('nav_active');
-      screenCityElem.classList.add('active');
-    }
-    homeElem.classList.remove('nav_active');
-    optionsElem.classList.remove('nav_active');
-    internetElem.classList.remove('nav_active');
-
-    screenHomeElem.classList.remove('active');
-    screenInternetElem.classList.remove('active');
-    screenOptionsElem.classList.remove('active');
-
-  })
-
-  internetElem.addEventListener('click', function() {
-    if(!this.classList.contains('nav_active')){
-      this.classList.add('nav_active');
-      screenInternetElem.classList.add('active');
-    }
-    homeElem.classList.remove('nav_active');
-    cityElem.classList.remove('nav_active');
-    optionsElem.classList.remove('nav_active');
-
-
-    screenHomeElem.classList.remove('active');
-    screenCityElem.classList.remove('active');
-    screenOptionsElem.classList.remove('active');
-  })
-
-  optionsElem.addEventListener('click', function() {
-    if(!this.classList.contains('nav_active')){
-      this.classList.add('nav_active');
-      screenOptionsElem.classList.add('active');
-    }
-    homeElem.classList.remove('nav_active');
-    cityElem.classList.remove('nav_active');
-    internetElem.classList.remove('nav_active');
-
-    screenHomeElem.classList.remove('active');
-    screenInternetElem.classList.remove('active');
-    screenCityElem.classList.remove('active');
-  })
-
-}
+}*/
 
 /*###############
   STORY FUNCTIONS
@@ -168,7 +155,7 @@ function load_save_game() {
 
   USER["id"] = userId;
   $.ajax({
-    url: '/php/main.php',
+    url: window.location.pathname + 'php/main.php',
     type: 'POST',
     async: true,
     data: {
@@ -285,7 +272,7 @@ function load_save_game() {
 function save_game() {
   var saveData = get_save_data();
   $.ajax({
-    url: '/php/main.php',
+    url: window.location.pathname + 'php/main.php',
     type: 'POST',
     async: true,
     data: {
@@ -345,4 +332,31 @@ function auto_save() {
     save_game();
   }
   return;
+}
+
+class game {
+  constructor () {
+
+  }
+  save() {
+    // Setup HTTP request
+    let xhr = new XMLHttpRequest();
+
+    // Create and send a GET request
+    xhr.open('POST', window.location.pathname + 'php/main.php');
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Setup listener to process completed requests
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var json = JSON.parse(xhr.responseText);
+        console.log(json.email + ", " + json.password);
+      }
+    };
+    // Set json data to send
+    var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+    
+    xhr.send();
+
+  }
 }

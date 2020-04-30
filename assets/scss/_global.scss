@@ -58,7 +58,7 @@ button {
   text-align: right;
 }
 
-.ascii, pre {
+.ascii, pre, anim {
   white-space: pre;
   font-family: $font;
   cursor: default;
@@ -69,4 +69,7 @@ button {
 }
 .ascii-trigger {
   cursor: pointer;
+}
+anim {
+  display: contents;
 }
