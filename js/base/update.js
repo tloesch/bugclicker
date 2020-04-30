@@ -180,11 +180,14 @@ function toggle_company_panel() {
   }
 }
 
-function update_worker_cost_elements () {
-  const scriptkiddi = document.querySelectorAll(".sk-cost");
-  scriptkiddi.forEach( function(e) {
-    e.innerHTML = skHelper.cost;
-  });
+function update_worker_buy_option () {
+  const scriptkiddi = document.querySelector("#buy-worker-sk");
+  if(skHelper.amount == 1){
+    scriptkiddi.style.display = "none";
+  }else {
+    scriptkiddi.style.display = "block";
+  }
+  
 }
 
 function update_worker_upgrade_elements () {
@@ -204,7 +207,7 @@ function refresh_all_screen_elements() {
   refresh_money();
   update_user_level();
   init_company_name();
-  update_worker_cost_elements();
+  update_worker_buy_option();
   update_worker_upgrade_elements();
 
   // TODO: Auto loop through all bugs

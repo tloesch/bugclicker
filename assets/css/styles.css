@@ -58,7 +58,7 @@ button.ascii {
 .t-align-right {
   text-align: right; }
 
-.ascii, pre {
+.ascii, pre, anim {
   white-space: pre;
   font-family: "freemono";
   cursor: default;
@@ -73,6 +73,9 @@ button.ascii {
 
 .ascii-trigger {
   cursor: pointer; }
+
+anim {
+  display: contents; }
 
 .bug-wrap {
   margin: 10px 0px;

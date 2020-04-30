@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Create bug node</title>
+	<link rel="stylesheet" type="text/css" href="http://localhost/bugclicker/assets/css/styles.css">
+	<style type="text/css">
+		#static{float:left;padding-right:50px;margin-right: 50px;border-right:2px solid black;}
+		#dynamic{float:left;}
+		pre {font-family: "freemono";}
+		section{display: block!important;}
+	</style>
+</head>
+<body>
+	<section id="static">
+		<div id="ascii1">
+			<h2>STATIC VERSION</h2>
+			<div id="click-panelX">
+				<div id="BUG-SLUG" class="bug-wrap align-center active wrap">
+					<div class="bug ascii"> _ /-\ _<br/>´_| X |_`<br/>´  \_/  `</div>
+					<div class="bug-infos">
+						<p class="name">*BUGNAME*</p>
+						<p class="counter">*BUGAMOUNT*</p>
+					</div>
+					<div class="ascii clickGroup progress">╟····················╢</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="dynamic">
+		<h2>PRODUCTIVE</h2>
+		<div id="click-panel">
+			<div id="bohrbug" class="bug-wrap align-center active wrap">
+				<div class="bug ascii"> _ /-\ _<br/>´_| B |_`<br/>´  \_/  `</div>
+				<div class="bug-infos">
+					<p class="name">BOHRBUG</p>
+					<p class="counter">0</p>
+				</div>
+				<div class="ascii clickGroup progress">╟····················╢</div>
+			</div>
+		</div>
+		<div class="btn-wrap">
+			<button id="add_bug">Add Bug</button>
+		</div>
+	</section>
+	<script type="text/javascript">
+		
+		function get_node() {
+			let node ="";
+
+			return node;
+		}
+
+
+		document.addEventListener('click', function() {
+			let node = get_node();
+			
+
+
+		});
+
+
+	</script>
+</body>
+</html>

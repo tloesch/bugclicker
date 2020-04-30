@@ -91,6 +91,61 @@ function init_bugs() {
 
 }
 
+class bug {
+  constructor(
+      type,
+      active,
+      amount,
+      autoAdd,
+      autoTimer,
+      fixAmount,
+      fixAdd,
+      fixReward,
+      fixAutoTimer,
+      fixPointsAmount,
+      fixPointsAdd,
+      fixPointsAutoAdd,
+      fixPointsReq,
+      screenWrap,
+      screenCounter,
+      screenFixCounter,
+      screenFixProgress,
+      archiveAmount,
+      archiveFixed) {
+
+    this.type = type;
+    this.active = active,
+    this.amount = amount;
+    this.autoAdd = autoAdd;
+    this.autoTimer = autoTimer;
+    this.fixAmount = fixAmount;
+    this.fixAdd = fixAdd;
+    this.fixReward = fixReward;
+    this.fixAutoTimer = fixAutoTimer;
+    this.fixPointsAmount = fixPointsAmount;
+    this.fixPointsAdd = fixPointsAdd;
+    this.fixPointsAutoAdd = fixPointsAutoAdd;
+    this.fixPointsReq = fixPointsReq;
+    this.screenWrap = screenWrap;
+    this.screenCounter = screenCounter;
+    this.screenFixCounter = screenFixCounter;
+    this.screenFixProgress = screenFixProgress;
+    this.archiveAmount = archiveAmount;
+    this.archiveFixes = archiveFixes;
+
+    //this._node =
+
+
+  }
+  get amount() {
+
+  }
+  set amount() {
+
+  }
+}
+
+
 // Prototype bug
 function bug (type, active, amount, autoAdd, autoTimer, fixAmount, fixAdd, fixReward, fixAutoTimer, fixPointsAmount, fixPointsAdd, fixPointsAutoAdd, fixPointsReq, screenWrap, screenCounter, screenFixCounter, screenFixProgress, statBugs, statFixes) {
   this.type = type;

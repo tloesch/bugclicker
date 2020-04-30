@@ -52,6 +52,7 @@
   <script src="js/base/helper.js"></script>
   <script src="js/base/city.js"></script>
   <script src="js/base/internet.js"></script>
+  <script src="js/base/animations.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
